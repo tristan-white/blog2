@@ -1,0 +1,103 @@
+---
+layout: post
+title: Advent of Code 2024
+description: It's that time of year.
+image: https://aplwiki.com/images/0/0d/Advent_Of_Code_Logo.png
+tags: [coding]
+---
+
+I heard about [Advent of Code](https://adventofcode.com/2024/about) last year, but didn't participate because I was busy.
+
+This year I'm still busy, but nonetheless succumbed to the feeling of needing to solve problems simply because they exist. All computer scientists I know have this curse.
+
+## Day 1
+
+The problem: [link](https://adventofcode.com/2024/day/1)
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/01/day01.py %}
+```
+
+## Day 2
+
+The problem: [link](https://adventofcode.com/2024/day/2)
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/02/day02.py %}
+```
+
+## Day 3
+
+The problem: [link](https://adventofcode.com/2024/day/3)
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/03/day03.py %}
+```
+
+## Day 4
+
+The problem: [link](https://adventofcode.com/2024/day/4)
+
+Sample input text: [sample.txt](https://raw.githubusercontent.com/tristan-white/tristan-white.github.io/refs/heads/main/_posts/_code/aoc24/04/in2.txt){:target="_blank"}
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/04/day04.py %}
+```
+
+## Day 5
+
+The problem: [link](https://adventofcode.com/2024/day/5)
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/05/day05.py %}
+```
+
+## Day 6
+
+The problem: [link](https://adventofcode.com/2024/day/6)
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/06/day06.py %}
+```
+
+## Day 7
+
+After solving [the problem](https://adventofcode.com/2024/day/7) today in python, I wondered how much faster it would be in C, so I did both.
+
+| Language | Part 1 Time (sec) | Part 2 Time (sec) |
+|----------|-------------------|-------------------|
+| C | 0.022 | 0.021 |
+| Python | 0.471 | 22.463 |
+
+
+The solution (in Python and C):
+
+```python
+{% include_relative _code/aoc24/07/day07.py %}
+```
+
+```c
+{% include_relative _code/aoc24/07/day07.c %}
+```
+
+## Day 8
+
+The problem: [link](https://adventofcode.com/2024/day/8)
+
+The solution:
+
+```python
+{% include_relative _code/aoc24/08/day08.py %}
+```

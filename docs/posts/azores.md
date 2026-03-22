@@ -1,0 +1,147 @@
+---
+layout: post
+title: Travel Hacking a Vacation in the Azores
+description: How to take incredibly nice vacations for an incredibly low cost.
+image: https://furnas.octanthotels.com/media/octant-furnas-hotelfurnasboutiquehotel_drone_bysuperazores-2-min.jpg
+tag: [travel hacking]
+---
+
+This week I took a vacation to the Azores that was funded almost entirely by credit card points and benefits.
+
+Were I not in the military, there's no way I would be able to afford these credit cards' annual fees. If you (or your spouse) are in the military, read on for info on how to take an incredibly nice vacation on a very low budget.
+
+## Planning the Trip
+
+![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffurnas.octanthotels.com%2Fmedia%2Ffurnas-boutique-hotel-melhor-preco-garantido-room-room-109-2.jpg&f=1&nofb=1&ipt=55516ed16acede9bae5fd608ec8312aeb8da545a53fcb367236c40d5e65a40a1&ipo=images){: .w-50 .right}
+
+![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hilton.com%2Fim%2Fen%2FPDLLADI%2F21342169%2Fking-guest-room-bedroom-with-view-1.jpg%3Fimpolicy%3Dcrop%26cw%3D5000%26ch%3D2799%26gravity%3DNorthWest%26xposition%3D0%26yposition%3D266%26rw%3D768%26rh%3D430&f=1&nofb=1&ipt=6cd6b6676d85acea660f445650606159089f9e904e59211808943b66e68490c1&ipo=images){: .w-50 .right}
+
+As of writing this post, I have three [Platinum Cards](https://tristanwhite.me/cards#american-express-platinum-card). Each card has an annnual [Fine Hotel's + Resort](https://tristanwhite.me/posts/optimizing-amex-hotel-credit/) credit that expires at the end of the calendar year. Using [maxfhr.com](https://www.maxfhr.com/), I searched Amex's eligible **Fine Hotels + Resorts** for inexpensive rates. The [Octant Furnas](https://furnas.octanthotels.com/en/) in the Azores had great rates in November because it's the off season then. Specifically, the rates were about $200/night, which is exactly the amount of the hotel credit that comes with each Platinum Card. Therefore, I could get three nights at this hotel and pay nothing. I booked it.[^1]
+
+Next I bought tickets that were about $750 round trip. These were entirely paid for using credit card points.
+
+For the other two nights of my five night vaction, I stayed at the [DoubleTree by Hilton Lagoa Azores Resort](https://www.hilton.com/en/hotels/pdlladi-doubletree-lagoa-azores/gallery/). For two nights it was $260, but the [Hilton Aspire Card](https://tristanwhite.me/cards#hilton-honors-american-express-aspire-card) gave me $200 off this price with its $200 semi-annual resort credit benefit.
+
+## The Haul
+
+What all did the credit cards pay for? How much money was saved in total?
+
+As mentioned, between the Platinum Card and Hilton Aspire Card benefits they covered $800. The flights, $750 round trip, were covered by points[^2].
+
+This was my first time using the [Fine Hotels + Resorts](https://tristanwhite.me/posts/optimizing-amex-hotel-credit/) benefit - and what a great card perk. Upon arrival, I was told that I would receive $100 credit to use at the spa, bar, or restuarant. Additionally, they upgraded me from a double bed room to a king with private pool access through the back window/door (see picture). The spa was very expensive, so I used my credit at the hotel restaurant, *À Terra*.
+
+![port](/assets/images/azores/pork.JPG){: .w-50 .right}
+
+It was incredible. The first night I had what I would put in the top three meals I've ever eaten. It was a massive spread, definitely enough for two people (thankfully I was very hungry and hadn't eaten since that morning). The meal included:
+
+- A kilo or roasted pork with a phonomenal honey and mustard glaze
+- A small dish with a variety of sauteed mushrooms
+- A small dish of local vegetables, consisting of sauteed peppers, carrot, eggplant, and tomatoes
+- Local corn, cooked in the Azorean style
+- A basket of potato wedges with aioli sauce
+
+With the appetizer and tip, this came out to $80.
+
+The Fine Hotels + Resorts program also comes with free breakfast. I didn't know what to expect from the buffet, but left more than satified. I didn't realize it before arriving in the Azores, but these islands have quite the gastronomical scene. The islands' climate and soil make them ideal for growing many fruits and vegetable, such as pineapple, watermelon, cantalope, peppers, tomatoes, and more. Additionally, there's cows all over the place, so nearly all the beef and dairy is locally sourced (and delicious).
+
+Breakfast consisted of handmade pastries, local "Azorean" yogurt with hazelnuts and sunflower and poppy seeds, bacon, sausage, scrambled eggs, hard boiled quail eggs, a smoothie, and cooked squash. 🤌
+
+The next night I stayed at the DoubleTree by Hilton Lagoa Azores Resort. The Hilton Aspire Card from American Express gives you "Diamond" status and $200 every six months to spend at Hilton resorts.[^3] Additionally, due to diamond status I was given an upgrade to a King bed with a view of the ocean. What's more, as a Diamond member you receive free breakfast. This breakfast was incredible. Just as at the Octant, there was a very wide spread of fruits, bread, cheeses, butter, and yogurt that were all locally sourced from the Azores.
+
+Here's a few more pictures of food I got at the Octant Furnas. Again, this was all covered by the credit that comes with booking a hotel through Amex in the Fine Hotels + Resorts program.
+
+<div class="row">
+    <div class="columnThirds">
+        <img src="/assets/images/azores/octant_breakfast.jpg" alt="octant breakfast">
+        <img src="/assets/images/azores/pizza.JPG" alt="pizza fom the octant">
+    </div>
+    <div class="columnThirds">
+        <img src="/assets/images/azores/wine.JPG" alt="complimentary wine">
+        <img src="/assets/images/azores/octopus.JPG" alt="octopus">
+    </div>
+    <div class="columnThirds">
+        <img src="/assets/images/azores/hilton_brekky.JPG" alt="hilton breakfast">
+        <img src="/assets/images/azores/limpets.JPG" alt="grilled limpets">
+    </div>
+</div>
+
+## Total Amount Saved
+
+If each breakfast was evaluated at $25 (reasonable, considering it was a buffet), then here's how the total cost for everything covered by credit card perks shakes out:
+
+- Benefits from my [Platinum Cards](https://tristanwhite.me/cards#american-express-platinum-card)
+  - 3 nights at the Octant at $200/night = **$600**
+  - $100 credit per day[^4] at the Octant = **$300**
+    - Also free upgrade to King Bed room with private pool!
+  - $25 breakfast buffet each of the three days **$75**
+  - $55 Uber back from the airport when I got home
+- Benefits from my [Hilton Aspire Card](https://tristanwhite.me/cards#hilton-honors-american-express-aspire-card)
+  - Hilton Resort credit = **$200**
+    - Also free upgrade to King Bed room with ocean view!
+- Points from [Amex](https://tristanwhite.me/cards#american-express-platinum-card) and [Chase](https://tristanwhite.me/cards#chase-sapphire-reserve-card) cards
+  - Round trip flights = **$750**
+
+Total: **$1830**
+
+## Pictures
+
+Of course, the best part of the trip wasn't the hotels or good deals - the Azores have incredible beauty.[^5]
+
+<div class="row">
+  <div class="column">
+    <img alt="" src="/assets/images/azores/01.JPG">
+    <img alt="" src="/assets/images/azores/02.JPG">
+    <img alt="" src="/assets/images/azores/03.JPG">
+    <img alt="" src="/assets/images/azores/04.JPG">
+    <img alt="" src="/assets/images/azores/05.JPG">
+    <img alt="" src="/assets/images/azores/06.JPG">
+    <img alt="" src="/assets/images/azores/07.JPG">
+  </div>
+  <div class="column">
+    <img alt="" src="/assets/images/azores/08.JPG">
+    <img alt="" src="/assets/images/azores/09.JPG">
+    <img alt="" src="/assets/images/azores/10.JPG">
+    <img alt="" src="/assets/images/azores/11.JPG">
+    <img alt="" src="/assets/images/azores/12.JPG">
+    <img alt="" src="/assets/images/azores/13.JPG">
+    <img alt="" src="/assets/images/azores/14.JPG">
+    <img alt="" src="/assets/images/azores/15.JPG">
+  </div>
+</div>
+
+---
+
+[^1]: Don't forget that in order to use the Fine Hotels + Resorts card benefit, you must book through American Express (not through the hotel or any other booking agency).
+[^2]: Check out [this post](https://tristanwhite.me/cards) I made about credit cards if you're in the military and learning about maximizing military benefits for credit card perks and points.
+[^3]: The resort has to be from Hilton's list of [Hilton Resort Credit Eligible Hotels](https://www.hilton.com/en/hilton-honors/resort-credit-eligible-hotels/)
+[^4]: Getting $100 **per day** rather than **per stay** is only possible if you book non-consecutive nights. This is exactly what I did. I called Amex to ensure this was allowed, and they confirmed that as long as there were 24 hours between stays, as per the terms and conditions, then this was acceptable.
+[^5]: TDIL [how to create a photo grid using html and CSS](https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp)
+
+
+<style>
+    .row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    }
+
+    /* Create two equal columns that sits next to each other */
+    .column {
+    flex: 50%;
+    max-width: 50%;
+    padding: 0 4px;
+    }
+
+    /* Create three equal columns that sits next to each other */
+    .columnThirds {
+    flex: 33%;
+    max-width: 33%;
+    padding: 0 4px;
+    }
+
+    .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+    }
+</style>

