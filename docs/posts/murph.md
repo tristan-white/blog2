@@ -4,9 +4,12 @@ title: Murph Every Day
 description: Doing a murph every day for a month.
 image: https://lh3.googleusercontent.com/pw/AP1GczPju7Mkj9fEZKvXb8-gZ3bhBC7H2om3UwWonTjxUAOgz1Onh3tIjbB0jNQ3kn16aa-dkr_WSSKpJDyb7rt9zYAMilwUdHxaJcWca_uwbz2snVC7-QVz=w2400
 tag: [health]
+hide:
+    - toc
 ---
 
 The [Murph](https://en.wikipedia.org/wiki/Michael_P._Murphy#Murph_workout) Workout:
+
 - 1 Mile Run
 - 100 pull ups
 - 200 push ups

@@ -30,7 +30,7 @@ As mentioned, between the Platinum Card and Hilton Aspire Card benefits they cov
 
 This was my first time using the [Fine Hotels + Resorts](https://tristanwhite.me/posts/optimizing-amex-hotel-credit/) benefit - and what a great card perk. Upon arrival, I was told that I would receive $100 credit to use at the spa, bar, or restuarant. Additionally, they upgraded me from a double bed room to a king with private pool access through the back window/door (see picture). The spa was very expensive, so I used my credit at the hotel restaurant, *À Terra*.
 
-![port](/assets/images/azores/pork.JPG){: .w-50 .right}
+![port](assets/azores/pork.JPG){: .w-50 .right}
 
 It was incredible. The first night I had what I would put in the top three meals I've ever eaten. It was a massive spread, definitely enough for two people (thankfully I was very hungry and hadn't eaten since that morning). The meal included:
 
@@ -86,6 +86,8 @@ Total: **$1830**
 ## Pictures
 
 Of course, the best part of the trip wasn't the hotels or good deals - the Azores have incredible beauty.[^5]
+
+![](assets/azores/01.JPG)
 
 <div class="row">
   <div class="column">

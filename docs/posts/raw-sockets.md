@@ -6,7 +6,7 @@ image: https://images.unsplash.com/photo-1581619971320-0e278e5971a0?q=80&w=2207&
 tag: [coding]
 ---
 
-I began learning about raw sockets in C recently. Here's a simple raw socket proram in C with comments explaning what's going on.
+I began learning about raw sockets in C recently. Here's a simple raw socket proram in C with comments explaning what's going on (also on [github](https://gist.github.com/tristan-white/f0712db5aa449dd4c655c1f6163f74bd):
 
 ```c
 /** This code shows how to create raw socket in C that listens for any
@@ -105,5 +105,6 @@ int main() {
 If you're new to C socket programming, I would highly reccomend [Beej's Guide to Network Programming](https://beej.us/guide/bgnet/).
 
 To learn more about raw socket programing, read these man pages:
+
 - [man 7 ip](https://www.man7.org/linux/man-pages/man7/ip.7.html)
 - [man packet](https://www.man7.org/linux/man-pages/man7/packet.7.html)
