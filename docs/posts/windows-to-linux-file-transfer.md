@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Windows to Linux File Transfers
-tag: [cheatsheet]
+tags:
+    - cheatsheet
 ---
 
 ![](https://imgs.xkcd.com/comics/file_transfer.png)

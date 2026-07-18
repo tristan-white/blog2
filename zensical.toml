@@ -47,6 +47,7 @@ Copyright &copy; 2026 Tristan White
 nav = [
     {"Home" = "index.md" },
     { "Posts" = [
+        "posts/runna-review.md",
         "posts/navfitx.md",
         "posts/nmap-scripting.md",
         "posts/fasthtml-railway.md",
@@ -66,7 +67,7 @@ nav = [
         "posts/hashcat.md",
         "posts/mitmproxy.md",
         "posts/gradio.md",
-        "posts/tar-and-nc-exfil.md",
+        "posts/tar-and-nc-for-exfil.md",
         "posts/ghidra-server.md",
         "posts/squarespace-domains-github-pages.md",
         "posts/plotly.md",
@@ -77,7 +78,6 @@ nav = [
         "posts/murph.md",
         "posts/books.md",
     ]},
-    { "About" = "about.md" }
 ]
 
 # With the "extra_css" option you can add your own CSS styling to customize

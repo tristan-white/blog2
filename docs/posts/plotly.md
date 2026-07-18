@@ -3,7 +3,8 @@ layout: post
 title: Plotly
 description: Data analysis is cool.
 image: https://raw.githubusercontent.com/cldougl/plot_images/add_r_img/plotly_2017.png
-tag: [data science]
+tag:
+    - "data science"
 ---
 Today I discovered [plotly](https://plotly.com/) and having a lot of fun playing around with it. Definitely will be using it in the future to make some pretty graphs. 
 

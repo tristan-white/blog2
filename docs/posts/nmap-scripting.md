@@ -3,7 +3,10 @@ title: Nmap Scripting
 description: Quickstart tutorial for writing nmap scripts.
 image: https://www.cybernewsblog.com/wp-content/uploads/2024/07/nmap-1024x640.jpg
 layout: post
-tags: [hacking, coding, reference]
+tags:
+    - hacking
+    - coding
+    - reference
 ---
 
 Recently I wanted to extend some of nmap's functionality, so I looked at [nmap's docs](https://nmap.org/book/nse.html) for using the Nmap Scripting Engine.

@@ -3,7 +3,8 @@ layout: post
 title: Travel Hacking a Vacation in the Azores
 description: How to take incredibly nice vacations for an incredibly low cost.
 image: https://furnas.octanthotels.com/media/octant-furnas-hotelfurnasboutiquehotel_drone_bysuperazores-2-min.jpg
-tag: [travel hacking]
+tags:
+    - "travel hacking"
 ---
 
 This week I took a vacation to the Azores that was funded almost entirely by credit card points and benefits.
@@ -30,7 +31,7 @@ As mentioned, between the Platinum Card and Hilton Aspire Card benefits they cov
 
 This was my first time using the [Fine Hotels + Resorts](https://tristanwhite.me/posts/optimizing-amex-hotel-credit/) benefit - and what a great card perk. Upon arrival, I was told that I would receive $100 credit to use at the spa, bar, or restuarant. Additionally, they upgraded me from a double bed room to a king with private pool access through the back window/door (see picture). The spa was very expensive, so I used my credit at the hotel restaurant, *À Terra*.
 
-![port](assets/azores/pork.JPG){: .w-50 .right}
+![port](assets/images/azores/pork.JPG){: .w-50 .right}
 
 It was incredible. The first night I had what I would put in the top three meals I've ever eaten. It was a massive spread, definitely enough for two people (thankfully I was very hungry and hadn't eaten since that morning). The meal included:
 
@@ -111,7 +112,6 @@ Of course, the best part of the trip wasn't the hotels or good deals - the Azore
   </div>
 </div>
 
----
 
 [^1]: Don't forget that in order to use the Fine Hotels + Resorts card benefit, you must book through American Express (not through the hotel or any other booking agency).
 [^2]: Check out [this post](https://tristanwhite.me/cards) I made about credit cards if you're in the military and learning about maximizing military benefits for credit card perks and points.

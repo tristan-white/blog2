@@ -3,7 +3,6 @@ title: How to deploy FastHTML on Railway.com
 description: The new web dev power couple.
 image: /assets/images/fasthtml-railway/fasthtml-railway.png
 layout: post
-tags: []
 ---
 
 [FastHTML](https://fastht.ml/) is a new web framework for creating "modern web applications in pure Python". It's awesome. 

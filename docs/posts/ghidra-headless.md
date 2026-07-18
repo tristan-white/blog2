@@ -3,7 +3,9 @@ layout: post
 title: Ghidra's Headless Analyzer
 description: Software reverse engineering made faster.
 image: https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/03/Installing-Ghidra-in-Linux.jpg
-tag: [ghidra, reverse engineering]
+tags:
+    - "ghidra"
+    - "reverse engineering"
 ---
 
 Say you are beginning a new project to pentest an embedded device, and you're able to get a copy of firmware and get access to the filesystem on the device. At this point, there may be a number of reasons you'd want to import all the executables and libraries into a ghidra project:

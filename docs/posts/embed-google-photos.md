@@ -2,7 +2,8 @@
 title: How to Embed Google Photos in a Website
 description: Free image hosting!
 image: https://lh3.googleusercontent.com/pw/AP1GczMCiRJmXjcSJuLDsbjfGXjq0uCELeFYvK80khmmEHYlm_TJ7Ehthbv5U2xQ1UI75Tody0zTCAEYizetStVgiZH9Kr6J6moJxz8sczE6k8LDJLeYC8_L=w800
-tags: [website]
+tags:
+    - website
 ---
 
 

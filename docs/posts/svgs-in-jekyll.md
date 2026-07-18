@@ -1,8 +1,8 @@
 ---
-layout: post
 title: SVGs for Jekyll
 description: How to add SVGs to statically generated sites.
-tag: [website]
+tag:
+    - website
 ---
 
 This website was created using [jekyll](https://jekyllrb.com/). Today I wanted to figure out how to add drawings to jekyll posts, and it didn't prove very hard. All you have to do is add the html image tag to your post.

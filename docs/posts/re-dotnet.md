@@ -2,7 +2,8 @@
 layout: post
 title: Intro to .NET Reverse Engineering
 description: VFTs suck (if you know you know)
-tag: [reverse engineering]
+tag:
+    - "reverse engineering"
 ---
 You’ve got your hands on a .NET binary that you want to reverse engineer. What do you do?
 

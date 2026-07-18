@@ -3,7 +3,8 @@ title: FITREP Links
 description: Navy resources that remove guesswork and pain from writing FITREPs.
 image: https://media.defense.gov/2025/Feb/24/2003651138/1300/700/0/250210-N-XK462-1432.JPG
 layout: post
-tags: [military]
+tags:
+    - military
 ---
 
 > BLUF: There are documents online that will tell you exactly what language and achievements should be in your FITREP. Using them will greatly simplify your process of writing FITREPs.
