@@ -72,7 +72,6 @@ If the Precept mentions specific skills the Navy needs, use your FITREP to show 
 
 By familiarizing yourself with the SecNav Approved Promotion Precept, the Promotion Board Convening Order, and the SECNAV Approved Merit Reorder Briefs, you can remove much of the guesswork from writing your FITREP. These documents provide a clear roadmap of what promotion boards are looking for, allowing you to tailor your FITREP to showcase your most relevant and impactful achievements. 
 
----
 
 [^4]: The msot recent **SECNAV Approved Promotion Precept** and **Promotion Board Convening Order** can be found on [this page](https://www.mynavyhr.navy.mil/Career-Management/Boards/Active-Duty-Officer/04-Line/FY-25/). Note: this page is for information concerning the promotion of **line** officers to **O4**. For information on promotion to O5, O6, CWO4-6, or Staff Officer promotions, see the bar on the left side of the page in the same link.
 [^3]: The most recent **SECNAV Approved Merit Reorder Briefs** can be found on [this page](https://www.mynavyhr.navy.mil/Career-Management/Boards/Active-Duty-Officer/Community-Briefs/)

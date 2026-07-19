@@ -8,7 +8,6 @@ Right now, posts on this site primarily revolve around computer-related topics (
 
 ### Quick Facts
 
-
 - Born in 1999
 - From Virginia <img src="https://flagcdn.com/w20/us-va.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" alt="United States">
 - University of Virginia Alumnus 

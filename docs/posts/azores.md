@@ -13,9 +13,12 @@ Were I not in the military, there's no way I would be able to afford these credi
 
 ## Planning the Trip
 
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffurnas.octanthotels.com%2Fmedia%2Ffurnas-boutique-hotel-melhor-preco-garantido-room-room-109-2.jpg&f=1&nofb=1&ipt=55516ed16acede9bae5fd608ec8312aeb8da545a53fcb367236c40d5e65a40a1&ipo=images){: .w-50 .right}
+<div class="grid cards" markdown>
 
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hilton.com%2Fim%2Fen%2FPDLLADI%2F21342169%2Fking-guest-room-bedroom-with-view-1.jpg%3Fimpolicy%3Dcrop%26cw%3D5000%26ch%3D2799%26gravity%3DNorthWest%26xposition%3D0%26yposition%3D266%26rw%3D768%26rh%3D430&f=1&nofb=1&ipt=6cd6b6676d85acea660f445650606159089f9e904e59211808943b66e68490c1&ipo=images){: .w-50 .right}
+- ![](https://furnas.octanthotels.com/api/media/file/furnas-boutique-hotel-melhor-preco-garantido-gallery226-2-900x506.jpg)
+- ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.hilton.com%2Fim%2Fen%2FPDLLADI%2F21342169%2Fking-guest-room-bedroom-with-view-1.jpg%3Fimpolicy%3Dcrop%26cw%3D5000%26ch%3D2799%26gravity%3DNorthWest%26xposition%3D0%26yposition%3D266%26rw%3D768%26rh%3D430&f=1&nofb=1&ipt=6cd6b6676d85acea660f445650606159089f9e904e59211808943b66e68490c1&ipo=images)
+
+</div>
 
 As of writing this post, I have three [Platinum Cards](https://tristanwhite.me/cards#american-express-platinum-card). Each card has an annnual [Fine Hotel's + Resort](https://tristanwhite.me/posts/optimizing-amex-hotel-credit/) credit that expires at the end of the calendar year. Using [maxfhr.com](https://www.maxfhr.com/), I searched Amex's eligible **Fine Hotels + Resorts** for inexpensive rates. The [Octant Furnas](https://furnas.octanthotels.com/en/) in the Azores had great rates in November because it's the off season then. Specifically, the rates were about $200/night, which is exactly the amount of the hotel credit that comes with each Platinum Card. Therefore, I could get three nights at this hotel and pay nothing. I booked it.[^1]
 
@@ -71,16 +74,16 @@ Here's a few more pictures of food I got at the Octant Furnas. Again, this was a
 If each breakfast was evaluated at $25 (reasonable, considering it was a buffet), then here's how the total cost for everything covered by credit card perks shakes out:
 
 - Benefits from my [Platinum Cards](https://tristanwhite.me/cards#american-express-platinum-card)
-  - 3 nights at the Octant at $200/night = **$600**
-  - $100 credit per day[^4] at the Octant = **$300**
+    - 3 nights at the Octant at \$200/night = **\$600**
+    - $100 credit per day[^4] at the Octant = **\$300**
     - Also free upgrade to King Bed room with private pool!
-  - $25 breakfast buffet each of the three days **$75**
-  - $55 Uber back from the airport when I got home
+    - $25 breakfast buffet each of the three days = **\$75**
+    - **$55** Uber back from the airport when I got home
 - Benefits from my [Hilton Aspire Card](https://tristanwhite.me/cards#hilton-honors-american-express-aspire-card)
-  - Hilton Resort credit = **$200**
-    - Also free upgrade to King Bed room with ocean view!
+    - Hilton Resort credit = **$200**
+        - Also free upgrade to King Bed room with ocean view!
 - Points from [Amex](https://tristanwhite.me/cards#american-express-platinum-card) and [Chase](https://tristanwhite.me/cards#chase-sapphire-reserve-card) cards
-  - Round trip flights = **$750**
+    - Round trip flights = **$750**
 
 Total: **$1830**
 
@@ -111,15 +114,6 @@ Of course, the best part of the trip wasn't the hotels or good deals - the Azore
     <img alt="" src="/assets/images/azores/15.JPG">
   </div>
 </div>
-
-
-[^1]: Don't forget that in order to use the Fine Hotels + Resorts card benefit, you must book through American Express (not through the hotel or any other booking agency).
-[^2]: Check out [this post](https://tristanwhite.me/cards) I made about credit cards if you're in the military and learning about maximizing military benefits for credit card perks and points.
-[^3]: The resort has to be from Hilton's list of [Hilton Resort Credit Eligible Hotels](https://www.hilton.com/en/hilton-honors/resort-credit-eligible-hotels/)
-[^4]: Getting $100 **per day** rather than **per stay** is only possible if you book non-consecutive nights. This is exactly what I did. I called Amex to ensure this was allowed, and they confirmed that as long as there were 24 hours between stays, as per the terms and conditions, then this was acceptable.
-[^5]: TDIL [how to create a photo grid using html and CSS](https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp)
-
-
 <style>
     .row {
     display: flex;
@@ -147,3 +141,9 @@ Of course, the best part of the trip wasn't the hotels or good deals - the Azore
     width: 100%;
     }
 </style>
+
+[^1]: Don't forget that in order to use the Fine Hotels + Resorts card benefit, you must book through American Express (not through the hotel or any other booking agency).
+[^2]: Check out [this post](https://tristanwhite.me/cards) I made about credit cards if you're in the military and learning about maximizing military benefits for credit card perks and points.
+[^3]: The resort has to be from Hilton's list of [Hilton Resort Credit Eligible Hotels](https://www.hilton.com/en/hilton-honors/resort-credit-eligible-hotels/)
+[^4]: Getting $100 **per day** rather than **per stay** is only possible if you book non-consecutive nights. This is exactly what I did. I called Amex to ensure this was allowed, and they confirmed that as long as there were 24 hours between stays, as per the terms and conditions, then this was acceptable.
+[^5]: TDIL [how to create a photo grid using html and CSS](https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp)

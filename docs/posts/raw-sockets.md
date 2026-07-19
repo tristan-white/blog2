@@ -5,6 +5,8 @@ image: https://images.unsplash.com/photo-1581619971320-0e278e5971a0?q=80&w=2207&
 tag:
     - coding
 date: 2024-12-08
+hide:
+    - toc
 ---
 
 I began learning about raw sockets in C recently. Here's a simple raw socket proram in C with comments explaning what's going on (also on [github](https://gist.github.com/tristan-white/f0712db5aa449dd4c655c1f6163f74bd):

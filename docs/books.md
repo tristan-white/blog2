@@ -6,6 +6,8 @@ image: https://images.unsplash.com/photo-1483736624420-dd3c4c0f12c4?q=80&w=1935&
 tags:
     - books
 date: 2022-01-01
+hide:
+    - toc
 ---
 
 :point_right: [Follow me on goodreads](https://www.goodreads.com/tristan_white)

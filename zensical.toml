@@ -58,7 +58,7 @@ nav = [
         "posts/azores.md",
         "posts/ghidra-headless.md",
         # "posts/comments-have-arrived.md",
-        "posts/credit-cards.md",
+        # "posts/credit-cards.md",
         "posts/javascript.md",
         "posts/oscp.md",
         "posts/windows-to-linux-file-transfer.md",
@@ -320,6 +320,13 @@ features = [
 # Read more:
 # - https://zensical.org/docs/setup/colors/
 # ----------------------------------------------------------------------------
+
+# Palette toggle for automatic mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "lucide/sun-moon"
+toggle.name = "Switch to light mode"
+
 [[project.theme.palette]]
 scheme = "default"
 toggle.icon = "lucide/sun"
@@ -336,6 +343,10 @@ toggle.name = "Switch to light mode"
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
 link = "https://github.com/tristan-white/"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/linkedin"
+link = "https://www.linkedin.com/in/tr15t4n/"
 
 # ----------------------------------------------------------------------------
 # In this section you can configure the Markdown extensions that are used when
@@ -380,3 +391,6 @@ combine_header_slug = true
 [project.markdown_extensions.pymdownx.tasklist]
 custom_checkbox = true
 [project.markdown_extensions.pymdownx.tilde]
+
+[project.markdown_extensions.zensical.extensions.glightbox]
+[project.plugins.markdown-exec]
