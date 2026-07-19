@@ -1,7 +1,8 @@
 ---
-layout: post
 title: Tar and Netcat
 description: How to use tar and nc to dump a file system from embedded devices.
+date: 2024-02-27
+updated: 2024-10-15
 ---
 
 ![](https://imgs.xkcd.com/comics/tar.png)

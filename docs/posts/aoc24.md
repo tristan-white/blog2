@@ -5,6 +5,7 @@ description: It's that time of year.
 image: https://aplwiki.com/images/0/0d/Advent_Of_Code_Logo.png
 tags:
     - coding
+date: 2024-12-01
 ---
 
 I heard about [Advent of Code](https://adventofcode.com/2024/about) last year, but didn't participate because I was busy.

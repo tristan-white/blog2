@@ -2,7 +2,10 @@
 layout: post
 title: Pcaps on Windows with netsh.exe
 description: Useful when no other tools are available (it's a native windows binary)
+date: 2024-06-05
+updated: 2024-10-18
 ---
+
 Windows doesn't have tcpdump, so if you want to create a .pcap file from a packet capture, the easiest method is to download Wireshark or some other third party software. But it's still possible to create a pcap using native files installed on Windows - there's just a few more steps.
 
 [Netsh.exe](https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-contexts) is a file in `\Windows\System32\` that can enable you to capture network packets with `netsh trace start capture=yes [filters]`. After you've captured the traffic, end the capture with `netsh trace stop`. Use the filters to filter out any traffic you don't want in the capture. To see information about available filters, use `netsh trace show capturefilterhelp`. To specify the output file, use `tracefile=DEST`.

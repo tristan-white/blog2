@@ -1,11 +1,11 @@
 ---
-layout: post
 title: Ghidra's Headless Analyzer
 description: Software reverse engineering made faster.
 image: https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/03/Installing-Ghidra-in-Linux.jpg
 tags:
     - "ghidra"
     - "reverse engineering"
+date: 2024-12-08
 ---
 
 Say you are beginning a new project to pentest an embedded device, and you're able to get a copy of firmware and get access to the filesystem on the device. At this point, there may be a number of reasons you'd want to import all the executables and libraries into a ghidra project:
@@ -47,6 +47,6 @@ _Unsure of your ghidra project's path? Open the GUI and use this button._
 ```
 
         
-> Tip: In addition to being able to import files and directories, you can also provide a path to a zip file and the analyzer will go through all the file therein. This can be particularly useful when zipping a filesystem; normally if the analyzer encounters a symlink when importing binaries, it follows the symlink and imports the symlink target. This can cause unwanted extra imports (eg. many imports of busybox under many different names). However, when parsing a zip file, the anaylzer will treat the symlinks like any other non-binary file and skip it.
-{: .prompt-tip}
+!!! tip
+    In addition to being able to import files and directories, you can also provide a path to a zip file and the analyzer will go through all the file therein. This can be particularly useful when zipping a filesystem; normally if the analyzer encounters a symlink when importing binaries, it follows the symlink and imports the symlink target. This can cause unwanted extra imports (eg. many imports of busybox under many different names). However, when parsing a zip file, the anaylzer will treat the symlinks like any other non-binary file and skip it.
 

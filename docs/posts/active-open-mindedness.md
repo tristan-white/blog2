@@ -4,6 +4,7 @@ title: Active Open-Mindedness
 description: A quality I highly admire in people.
 tags:
     - books
+date: 2023-11-12
 ---
 
 I’ve been reading *Range: Why Generalists Triumph in a Specialized World* by David Epstein and enjoying much more than I thought I would when I read the title. It’s about the importance of broad knowledge over a wide range of domains.

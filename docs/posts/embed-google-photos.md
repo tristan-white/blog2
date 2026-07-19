@@ -4,6 +4,7 @@ description: Free image hosting!
 image: https://lh3.googleusercontent.com/pw/AP1GczMCiRJmXjcSJuLDsbjfGXjq0uCELeFYvK80khmmEHYlm_TJ7Ehthbv5U2xQ1UI75Tody0zTCAEYizetStVgiZH9Kr6J6moJxz8sczE6k8LDJLeYC8_L=w800
 tags:
     - website
+date: 2024-11-29
 ---
 
 
@@ -71,5 +72,6 @@ node script.js https://photos.app.goo.gl/5w3mZ4PX1NfYNnmi8
 # Output:
 # https://lh3.googleusercontent.com/pw/AP1GczMCiRJmXjcSJuLDsbjfGXjq0uCELeFYvK80khmmEHYlm_TJ7Ehthbv5U2xQ1UI75Tody0zTCAEYizetStVgiZH9Kr6J6moJxz8sczE6k8LDJLeYC8_L=w2400
 ```
-> Fun Fact: I took this photo on Thanksgiving in Spain while studying abroad in València. I submitted it to a random travel blog that was having a "scholarship photo contest" for anyone in college. Nine months later I was contacted and told I had won, and received $500.
-{: .prompt-tip}
+
+!!! info "Fun Fact"
+    I took this photo on Thanksgiving in Spain while studying abroad in València. I submitted it to a random travel blog that was having a "scholarship photo contest" for anyone in college. Nine months later I was contacted and told I had won, and received $500.

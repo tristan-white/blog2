@@ -4,7 +4,10 @@ title: Custom Squarespace Domains with GitHub Pages
 image: https://miro.medium.com/v2/resize:fit:720/format:webp/1*YmUSQtKJNVvx8rJ3u_OWdw.png
 tags:
     - website
+date: 2024-02-25
+updated: 2024-10-18
 ---
+
 Github Pages will host anyone's website for free, as long as it is statically generated (ie you aren't doing any fancy backend stuff like interacting with databases).
 
 By default, the site will be hosted at `<github-username>.github.io`. For example, my website (the site you're on now) is hosted at [tristan-white.github.io](https://tristan-white.github.io).

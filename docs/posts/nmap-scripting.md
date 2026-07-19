@@ -7,6 +7,8 @@ tags:
     - hacking
     - coding
     - reference
+date: 2025-04-19
+updated: 2026-04-13
 ---
 
 Recently I wanted to extend some of nmap's functionality, so I looked at [nmap's docs](https://nmap.org/book/nse.html) for using the Nmap Scripting Engine.

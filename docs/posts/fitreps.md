@@ -2,13 +2,13 @@
 title: FITREP Links
 description: Navy resources that remove guesswork and pain from writing FITREPs.
 image: https://media.defense.gov/2025/Feb/24/2003651138/1300/700/0/250210-N-XK462-1432.JPG
-layout: post
 tags:
     - military
+date: 2025-01-02
 ---
 
-> BLUF: There are documents online that will tell you exactly what language and achievements should be in your FITREP. Using them will greatly simplify your process of writing FITREPs.
-{: .prompt-tip}
+!!! info "BLUF"
+    There are documents online that will tell you exactly what language and achievements should be in your FITREP. Using them will greatly simplify your process of writing FITREPs.
 
 FITREPs is painful. None of us (hopefully) have experience bragging about ourselves. Then there's the uncertainty in trying to figure out how to condense a year's worth of work into a few bullet points: 
 

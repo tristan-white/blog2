@@ -1,10 +1,10 @@
 ---
-layout: post
 title: Travel Hacking a Vacation in the Azores
 description: How to take incredibly nice vacations for an incredibly low cost.
 image: https://furnas.octanthotels.com/media/octant-furnas-hotelfurnasboutiquehotel_drone_bysuperazores-2-min.jpg
 tags:
     - "travel hacking"
+date: 2024-11-19
 ---
 
 This week I took a vacation to the Azores that was funded almost entirely by credit card points and benefits.

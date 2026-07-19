@@ -1,11 +1,12 @@
 ---
-layout: post
 title: Mermaid for Jekyll
 description: How to use Mermaid graphs in statically generated sites. 🧜‍♀️
 mermaid: true
 image: https://static.packt-cdn.com/products/9781801078023/graphics/image/Figure_6.49_B17306.jpg
 tags:
     - website
+date: 2024-06-26
+updated: 2024-10-15
 ---
 
 ```mermaid
@@ -74,6 +75,5 @@ If you really want to use Jekyll to render mermaid markdown using backticks (as 
 
 Personally, I think method one is easiest, but if you really want to use backticks to denote mermaid graphs, [those](https://github.com/jeffreytse/jekyll-spaceship?tab=readme-ov-file#installation) [two](https://carsonboden.com/Programming/Jekyll-Pages#github-pages) links will help you do it.
 
----
 
 [^1]: Most up to date html found [here](https://www.jsdelivr.com/package/npm/mermaid)

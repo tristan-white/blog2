@@ -5,6 +5,7 @@ permalink: cards
 image: https://upgradedpoints.com/wp-content/uploads/2022/09/Amex-Credit-Cards-and-Chase-Credit-Cards-Upgraded-Points-LLC-Large.jpg
 tags:
     - "travel hacking"
+date: 2024-10-12
 ---
 
 In 2022 I began researching credit cards and learning about their perks and points. I was hoping they would help me do a little extra traveling or get something free here and there, but the more I learned, the more I began to realize that these cards can help save some serious cash (especially for US service members). As of <span id="today1"></span> I've saved <strong id="saved-money"></strong>.

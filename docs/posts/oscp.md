@@ -5,6 +5,7 @@ description: Personal notes/reference guide created while studying for the the O
 image: https://it-exams.net/wp-content/uploads/2023/04/OSCP-Certification.jpg
 tags:
     - hacking
+date: 2024-07-12
 ---
 
 ## Intro to Web Application Attacks
@@ -429,8 +430,8 @@ tags:
 - Run cmd prompt as a different user:
 	- `runas /user:<USER> cmd`
 
-> Tip: If `runas` isn't working but you have access to the GUI, try just running the powershell prompt as administrator and logging in with admin creds 
-{: .prompt-tip}
+!!! tip
+    If `runas` isn't working but you have access to the GUI, try just running the powershell prompt as administrator and logging in with admin creds 
 
 - Powershell logs
 	- Get list of commands executed in the past: `Get-History`

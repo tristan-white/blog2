@@ -2,17 +2,18 @@
 title: Javascript
 description: An inevitable meeting.
 image: https://www.infoworld.com/wp-content/uploads/2024/06/shutterstock_1361674454-100939444-orig.jpg?resize=1024%2C684&quality=50&strip=all
-layout: post
 tags:
     - coding
+date: 2024-10-06
+updated: 2024-12-16
 ---
 
-I've managed to stay away from javascript trhoughout a whole computer science degree and two years as a software engineer but every once in a while something pops up that requires it and I'll wish I was more familiar with it. So I went and learned a bit of JS today.
+I've managed to stay away from javascript throughout a whole computer science degree and two years as a software engineer but every once in a while something pops up that requires it and I'll wish I was more familiar with it. So I went and learned a bit of JS today.
 
 To practice, I made a calculator to (roughly) calculate the annual salary of military members after taxes.
 
 <input type="number" id="bah" placeholder="Monthly BAH"/><br>
-<input type="number" id="base_pay" placeholder="Monthy Base Pay"/><br>
+<input type="number" id="base_pay" placeholder="Monthly Base Pay"/><br>
 <button id="submit">Submit</button>
 
 <p>Salary after taxes: <strong id="result"></strong></p>

@@ -2,6 +2,8 @@
 title: NAVFIT
 description: Why the Navy requires sailors to use a buggy Visual Basic app written in 1998.
 image: /assets/images/navfitx/meme3.jpg
+date: 2026-01-16
+updated: 2026-01-18
 ---
 
 TLDR:
@@ -75,7 +77,7 @@ NAVFIT98 has become emblematic of the "if it ain't broke don't fix it" mentality
 
 But I was curious - is it really that hard to create a replacement for NAVFIT98? One that's easy to install, cross-platform, does better validation, and uses more modern file formats to import/export data[^8]?
 
-I gave it a crack, and built a replacement: [NAVFITX](https://github.com/tristan-white/navfitx)
+I gave it a crack, and built a replacement: [NAVFITX](navfitx.com)
 
 (I'm open to suggestions for better names.)
 
@@ -85,7 +87,7 @@ Who knows if the Navy will continue to use NAVFIT98 in perpetuity. In the meanti
 
 To be clear: I'm not commenting on the [metrics the Navy uses for talent management](https://www.usni.org/magazines/proceedings/2017/december/time-review-fitrep-paradigm), only the software.
 
----
+
 
 [^1]: NAVFIT98 is supposed to be a WYSIWYG (What-You-See-Is-What-You-Get) app. It presents a virtual document on the screen that looks like physical paper report. When the report is printed, it's supposed to look like the virtual document in the NAVFIT98 app, but this isn't always the case. Words or lines of text get cut off, and text isn't always aligned properly. When speaking to the admin department at my last command, I was told by the sailor responsible for submitting the reports that the alignment issue was especially infuriating given the instruction from the command (very commonly required throughout the Navy, though not strictly required) that the first and last line of the "Comments on Performance" block be center aligned. Center aligned text in NAVFIT98 would appear correctly in the app, but print differently (and not center-aligned). After much failed troubleshooting, the sailor fond that the "easiest" way to solve the issue was to print the report with it's unaligned text, then fix it up in Adobe Acrobat Pro (a licensed PDF editing software).
 [^2]: [Performance Evaluation FAQs, August 2025](https://www.mynavyhr.navy.mil/Career-Management/Performance-Evaluation/FAQ/)

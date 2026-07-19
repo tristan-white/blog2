@@ -1,10 +1,10 @@
 ---
-layout: post
 title: Raw Sockets
 description: Tips for using raw sockets in C.
 image: https://images.unsplash.com/photo-1581619971320-0e278e5971a0?q=80&w=2207&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
 tag:
     - coding
+date: 2024-12-08
 ---
 
 I began learning about raw sockets in C recently. Here's a simple raw socket proram in C with comments explaning what's going on (also on [github](https://gist.github.com/tristan-white/f0712db5aa449dd4c655c1f6163f74bd):

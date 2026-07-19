@@ -1,8 +1,8 @@
 ---
-layout: post
 title: Windows to Linux File Transfers
 tags:
     - cheatsheet
+date: 2025-01-07
 ---
 
 ![](https://imgs.xkcd.com/comics/file_transfer.png)
@@ -61,11 +61,12 @@ copy mimikatz.log \\tsclient\test\mimikatz.log
 ```
 
 ## smpacket tools
-> `psexec` and `wmiexec` are shipped with built in feature for file transfer.
-{: .prompt-info}
 
-> **Note**: By default whether you upload (lput) or download (lget) a file, it'll be writte in `C:\Windows` path.
-{: .prompt-info}
+!!! tip
+    `psexec` and `wmiexec` are shipped with built in feature for file transfer.
+
+!!! note
+    By default whether you upload (lput) or download (lget) a file, it'll be writte in `C:\Windows` path.
 
 Uploading mimikatz.exe to the target machine:
 ```powershell

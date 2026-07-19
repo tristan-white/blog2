@@ -1,10 +1,12 @@
 ---
-layout: post
 title: Intro to .NET Reverse Engineering
 description: VFTs suck (if you know you know)
 tag:
     - "reverse engineering"
+date: 2023-12-02
+updated: 2024-10-20
 ---
+
 You’ve got your hands on a .NET binary that you want to reverse engineer. What do you do?
 
 You can’t just open in the Ghidra CodeBrowser like you’d normally do with an executable. Well, you could, but when you try to analyze a .NET binary in Ghidra you’ll probably get an error message that says something like `Demangler Micosoft> Apply failure (DemangledFunction: IllegalArgumentException` :
