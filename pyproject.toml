@@ -1,0 +1,8 @@
+[project]
+name = "blog2"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "markdown-exec[ansi]>=1.12.3",
+    "zensical>=0.0.51",
+]
