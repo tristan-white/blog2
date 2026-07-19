@@ -5,9 +5,11 @@ image: /assets/images/canberra_marathon.jpg
 date: 2026-04-12
 ---
 
+!!! info "TL;DR"
+    I think it's worth it.
+
 I was quite on the fence about paying for [Runna](https://www.runna.com/) when I signed up for to train for my thrid marathon; I hope this review will help other decided whether or not to purchase a subscription.
 
-(TL;DR: I think it's worth it.)
 
 ## Running History
 

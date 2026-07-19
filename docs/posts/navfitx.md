@@ -6,10 +6,10 @@ date: 2026-01-16
 updated: 2026-01-18
 ---
 
-TLDR:
-- I found out a few months ago the Navy scrapped the new performance evaluation app meant to replace the current one built in 1998 due to excessive bugs and software issues.
-- I was disappointed it failed, because the 1998 app is quite bad.
-- I'd been thinking about a foray into desktop app development, so I took the opportunity to build a [replacement for NAVFIT98](https://github.com/tristan-white/navfitx).
+!!! info "TL;DR"
+    - I found out a few months ago the Navy scrapped the new performance evaluation app meant to replace the current one built in 1998 due to excessive bugs and software issues.
+    - I was disappointed it failed, because the 1998 app is quite bad.
+    - I'd been thinking about a foray into desktop app development, so I took the opportunity to build a [replacement for NAVFIT98](https://github.com/tristan-white/navfitx).
 
 ## Older than Most LTJGs
 
