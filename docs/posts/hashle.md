@@ -19,11 +19,11 @@ After $3 of credits and an hour of prompting and coddling copilot, it pumped out
 $ hashle --help
 ```
 
-```console exec="true" source="console"
+```console exec="true" source="console" result="ansi"
 $ hashle list-algorithms
 ```
 
-```console exec="true" source="console"
+```console exec="true" source="console" result="ansi"
 $ hashle extend --help
 ```
 
