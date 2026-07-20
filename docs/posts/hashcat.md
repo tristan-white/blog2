@@ -4,6 +4,7 @@ description: Quick tips for the world's most popular password cracker.
 image: https://2.bp.blogspot.com/-ErHto8FzL1g/WSLXlgmZTWI/AAAAAAAAJ0s/ELyhSq8SDsgArJ8xIFyKZH031iQFcgO7wCLcB/s1600/Hashcat.jpg
 tags:
     - hacking
+date: 2024-03-26
 ---
 
 Personal reference guide for using [hashcat](https://hashcat.net/hashcat/).
