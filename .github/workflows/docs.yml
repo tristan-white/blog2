@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
-      - run: uv pip install -r pyproject.toml
+      - run: uv sync
       # - run: pip install zensical
       # - run: pip install "markdown-exec[ansi]"
       - run: uv run zensical build --clean
