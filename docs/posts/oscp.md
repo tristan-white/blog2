@@ -1,5 +1,4 @@
 ---
-layout: post
 title: OSCP
 description: Personal notes/reference guide created while studying for the the OSCP exam.
 image: https://it-exams.net/wp-content/uploads/2023/04/OSCP-Certification.jpg

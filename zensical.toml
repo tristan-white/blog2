@@ -47,6 +47,7 @@ Copyright &copy; 2026 Tristan White
 nav = [
     {"Home" = "index.md" },
     { "Posts" = [
+        "posts/pytest-for-cli-apps.md",
         "posts/hashle.md",
         "posts/runna-review.md",
         "posts/navfitx.md",
