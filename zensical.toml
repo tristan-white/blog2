@@ -47,6 +47,7 @@ Copyright &copy; 2026 Tristan White
 nav = [
     {"Home" = "index.md" },
     { "Posts" = [
+        "posts/reva.md",
         "posts/pytest-for-cli-apps.md",
         "posts/hashle.md",
         "posts/runna-review.md",
@@ -398,3 +399,4 @@ custom_checkbox = true
 
 [project.markdown_extensions.zensical.extensions.glightbox]
 [project.plugins.markdown-exec]
+[project.markdown_extensions.pymdownx.snippets]
