@@ -47,6 +47,7 @@ Copyright &copy; 2026 Tristan White
 nav = [
     {"Home" = "index.md" },
     { "Posts" = [
+        # "posts/reva-vs-ghidra-mcp.md",
         "posts/reva.md",
         "posts/pytest-for-cli-apps.md",
         "posts/hashle.md",

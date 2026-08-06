@@ -7,7 +7,7 @@ tags:
 
 # ReVa
 
-[ReVa](github.com/cyberkaida/reverse-engineering/assistant) is "A Ghidra MCP server for AI-powered reverse engineering". It has two modes:
+[ReVa](https://github.com/cyberkaida/reverse-engineering-assistant) is "A Ghidra MCP server for AI-powered reverse engineering". It has two modes:
 
 - Assistant Mode: for interactive RE in the ghidra GUI.
 - Headless Mode: for use in headless ghidra scripts.
