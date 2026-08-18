@@ -10,7 +10,7 @@ date: 2024-11-29
 
 It's easy to share google photos with others, but it's not simple to embed them in blogs or personal websites.
 
-The website [labnol.org has a tool](https://www.labnol.org/embed/google/photos/) that allows you to easily embed google photos, but in my experiene it occasionally doesn't work. Additionally, sometimes you have to complete google captchas that can be pretty time consuming if you're trying to generate embed links for lots of photos.
+The website [labnol.org has a tool](https://www.labnol.org/embed/google/photos/) that allows you to easily embed google photos, but in my experience it occasionally doesn't work. Additionally, sometimes you have to complete google captchas that can be pretty time consuming if you're trying to generate embed links for lots of photos.
 
 An alternative to using the tool on labnol.org is to run code locally that does the same thing. The labnol.org tool works by using a the [puppeteer](https://pptr.dev/) library to open the share link google photos gives you when you hit the share button, then parsing that webpage and returning a link from an HTML `meta` tag on that page.
 

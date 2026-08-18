@@ -1,3 +1,8 @@
+---
+hide:
+    - toc
+---
+
 # About
 
 ## Hello! :waving_hand: I'm Tristan.
@@ -6,7 +11,7 @@ I came across a [book](https://youtu.be/vyVpRiqOvt4?t=93) in 2022 that convinced
 
 Right now, posts on this site primarily revolve around computer-related topics (since that's where most of my time goes), but I plan on writing about other topics I find interesting when I have time. Feel free to look around!
 
-### I am
+I am...
 
 - from Virginia <img src="https://flagcdn.com/w20/us-va.png" srcset="https://flagcdn.com/w40/us.png 2x" width="20" alt="United States">
 - living in Australia :flag_au:

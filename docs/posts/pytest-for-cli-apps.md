@@ -15,7 +15,7 @@ Let's look at an example for a python CLI that uses [typer](https://typer.tiango
 ```python title="tests/test_cli.py"
 import pytest
 import typer
-from tpyer.testing import CliRunner
+from typer.testing import CliRunner
 from myapp.cli import app
 
 runner = CliRunner()
@@ -32,7 +32,7 @@ Now run `pytest --snapshot-update`.
 
 This will automatically take whatever you compared `snapshot` to (in this case `result.stdout`) and create a copy of that in your `tests` directory. Now when you run `pytest`, it compares it to these snapshots.
 
-Whever the CLI changes, it will fail this test until you run `pytest --snapshot-update` again.
+Whenever the CLI changes, it will fail this test until you run `pytest --snapshot-update` again.
 
 
 *[CLI]: Command Line Interface 

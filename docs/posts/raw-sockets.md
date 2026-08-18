@@ -9,7 +9,7 @@ hide:
     - toc
 ---
 
-I began learning about raw sockets in C recently. Here's a simple raw socket proram in C with comments explaning what's going on (also on [github](https://gist.github.com/tristan-white/f0712db5aa449dd4c655c1f6163f74bd):
+I began learning about raw sockets in C recently. Here's a simple raw socket program in C with comments explaining what's going on (also on [github](https://gist.github.com/tristan-white/f0712db5aa449dd4c655c1f6163f74bd):
 
 ```c
 /** This code shows how to create raw socket in C that listens for any

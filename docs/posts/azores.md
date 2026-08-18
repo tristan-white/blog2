@@ -46,7 +46,7 @@ It was incredible. The first night I had what I would put in the top three meals
 
 With the appetizer and tip, this came out to $80.
 
-The Fine Hotels + Resorts program also comes with free breakfast. I didn't know what to expect from the buffet, but left more than satified. I didn't realize it before arriving in the Azores, but these islands have quite the gastronomical scene. The islands' climate and soil make them ideal for growing many fruits and vegetable, such as pineapple, watermelon, cantalope, peppers, tomatoes, and more. Additionally, there's cows all over the place, so nearly all the beef and dairy is locally sourced (and delicious).
+The Fine Hotels + Resorts program also comes with free breakfast. I didn't know what to expect from the buffet, but left more than satisfied. I didn't realize it before arriving in the Azores, but these islands have quite the gastronomical scene. The islands' climate and soil make them ideal for growing many fruits and vegetable, such as pineapple, watermelon, cantaloupe, peppers, tomatoes, and more. Additionally, there's cows all over the place, so nearly all the beef and dairy is locally sourced (and delicious).
 
 Breakfast consisted of handmade pastries, local "Azorean" yogurt with hazelnuts and sunflower and poppy seeds, bacon, sausage, scrambled eggs, hard boiled quail eggs, a smoothie, and cooked squash. 🤌
 

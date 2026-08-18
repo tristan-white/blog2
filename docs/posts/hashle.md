@@ -11,7 +11,7 @@ Everyone's talking about [fable](https://www.anthropic.com/claude/fable) so I de
 
 But before trying out fable, I wanted to see how much [Copilot](https://github.com/features/copilot/cli/) could accomplish. 
 
-I recently spent most of a week learning more about cryptographic vulnerabilities in computers, so I decided to test out copilot by building a python library and CLI tool to perform [hash length extension attacks](https://en.wikipedia.org/wiki/Length_extension_attack). There's already a couple projects[^1] on github that perform this attack, but they all were either no longer maintained, messy, or didn't support all the hashes succeptible to this attack[^2].
+I recently spent most of a week learning more about cryptographic vulnerabilities in computers, so I decided to test out copilot by building a python library and CLI tool to perform [hash length extension attacks](https://en.wikipedia.org/wiki/Length_extension_attack). There's already a couple projects[^1] on github that perform this attack, but they all were either no longer maintained, messy, or didn't support all the hashes susceptible to this attack[^2].
 
 After $3 of credits and an hour of prompting and coddling copilot, it pumped out [hashle](https://github.com/tristan-white/hashle):
 
