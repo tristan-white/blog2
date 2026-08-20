@@ -66,12 +66,15 @@ const puppeteer = require('puppeteer');
 
 Finally, get the share link from your google photo by clicking on your photo in google photos and hitting **Share > Create Link**. Add that link as a command line argument to the script we just created. Run it and enjoy the generated embed link.
 
-```bash
-node script.js https://photos.app.goo.gl/5w3mZ4PX1NfYNnmi8
+=== "command"
 
-# Output:
-# https://lh3.googleusercontent.com/pw/AP1GczMCiRJmXjcSJuLDsbjfGXjq0uCELeFYvK80khmmEHYlm_TJ7Ehthbv5U2xQ1UI75Tody0zTCAEYizetStVgiZH9Kr6J6moJxz8sczE6k8LDJLeYC8_L=w2400
-```
+    ```bash
+    node script.js https://photos.app.goo.gl/5w3mZ4PX1NfYNnmi8
+    ```
+
+=== "output"
+
+    <https://lh3.googleusercontent.com/pw/AP1GczMCiRJmXjcSJuLDsbjfGXjq0uCELeFYvK80khmmEHYlm_TJ7Ehthbv5U2xQ1UI75Tody0zTCAEYizetStVgiZH9Kr6J6moJxz8sczE6k8LDJLeYC8_L=w2400>
 
 !!! info "Fun Fact"
     I took this photo on Thanksgiving in Spain while studying abroad in València. I submitted it to a random travel blog that was having a "scholarship photo contest" for anyone in college. Nine months later I was contacted and told I had won, and received $500.
