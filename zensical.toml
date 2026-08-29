@@ -61,6 +61,8 @@ nav = [
         "posts/aoc24.md",
         "posts/embed-google-photos.md",
         "posts/azores.md",
+        "posts/pie_time_2.md",
+        "posts/binary_gauntlet_1.md",
         "posts/ghidra-headless.md",
         # "posts/comments-have-arrived.md",
         # "posts/credit-cards.md",
@@ -401,4 +403,5 @@ custom_checkbox = true
 
 [project.markdown_extensions.zensical.extensions.glightbox]
 [project.plugins.markdown-exec]
-[project.markdown_extensions.pymdownx.snippets]
+[project.markdown_extensions]
+pymdownx.snippets = {}
