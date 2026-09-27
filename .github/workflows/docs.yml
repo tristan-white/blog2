@@ -25,9 +25,10 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
-      - run: uv sync
       # - run: pip install zensical
       # - run: pip install "markdown-exec[ansi]"
+      - run: uv venv
+      - run: uv pip install zensical markdown-exec[ansi] hashle
       - run: uv run zensical build --clean
       - uses: actions/upload-pages-artifact@v5
         with:
