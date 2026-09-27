@@ -9,6 +9,8 @@ I was quite on the fence about paying for [Runna](https://www.runna.com/) when I
 
 (TL;DR: I think it's worth it.)
 
+<!-- more -->
+
 ## Running History
 
 I've run two previous marathon. For each marathon, I spent about 15 weeks training. My training plan was dead simple - I'd figure out what target time I wanted, and google "16 week \<target time\> marathon training plan", find one with a printable PDF, and tape it to the wall in my room. Then I'd try just do the mileage each day. I didn't differentiate between easy runs, workout, tempo, or even do warm up/cool down laps. I kinda just got out there each morning and tried to run the miles for the day at a pace I felt was respectable while also not going too hard so as to make it completely unenjoyable.

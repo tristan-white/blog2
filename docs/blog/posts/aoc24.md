@@ -12,6 +12,8 @@ I heard about [Advent of Code](https://adventofcode.com/2024/about) last year, b
 
 This year I'm still busy, but nonetheless succumbed to the feeling of needing to solve problems simply because they exist. All computer scientists I know have this curse.
 
+<!-- more -->
+
 ## Day 1
 
 The problem: [link](https://adventofcode.com/2024/day/1)

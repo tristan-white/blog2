@@ -6,9 +6,10 @@ date: 2025-01-07
 ---
 
 ![](https://imgs.xkcd.com/comics/file_transfer.png)
-_A relevant xkcd comic for your pleasure._
 
 Transferring files from windows to linux can be annoying. Anyway you do it requires remembering some command line options for whatever tool you're using, which is why this post is being made as a reference for myself.
+
+<!-- more -->
 
 Here are the methods:
 

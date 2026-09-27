@@ -16,7 +16,7 @@ Right now, posts on this site primarily revolve around computer-related topics (
 
 ### Right now I am...
 
-- Reading a [book](./posts/books.md) :books:
+- Reading a [book](./books.md) :books:
 - Active Duty Navy :anchor:
 - [Training](https://www.strava.com/athletes/tristanwhite) :man_running:
 - [Building things](https://github.com/tristan-white/) :hammer_and_wrench:

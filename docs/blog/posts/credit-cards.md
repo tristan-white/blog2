@@ -6,9 +6,12 @@ image: https://upgradedpoints.com/wp-content/uploads/2022/09/Amex-Credit-Cards-a
 tags:
     - "travel hacking"
 date: 2024-10-12
+draft: true
 ---
 
 In 2022 I began researching credit cards and learning about their perks and points. I was hoping they would help me do a little extra traveling or get something free here and there, but the more I learned, the more I began to realize that these cards can help save some serious cash (especially for US service members). As of <span id="today1"></span> I've saved <strong id="saved-money"></strong>.
+
+<!-- more -->
 
 Here's a quick break down of every credit card perk, and how much value I've redeemed from them to date (<span id="today2"></span>):
 

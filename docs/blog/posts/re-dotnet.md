@@ -9,6 +9,8 @@ updated: 2024-10-20
 
 You’ve got your hands on a .NET binary that you want to reverse engineer. What do you do?
 
+<!-- more -->
+
 You can’t just open in the Ghidra CodeBrowser like you’d normally do with an executable. Well, you could, but when you try to analyze a .NET binary in Ghidra you’ll probably get an error message that says something like `Demangler Micosoft> Apply failure (DemangledFunction: IllegalArgumentException` :
 
 ![Untitled](./assets/images/dotnet_re/1.png)

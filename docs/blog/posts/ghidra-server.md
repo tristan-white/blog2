@@ -2,6 +2,7 @@
 layout: post
 title: 'Ghidra Shared Projects: SRE Collaboration'
 description: A quick start guide to get your Ghidra server up and running.
+date: 2024-02-26
 image: https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2022/03/Installing-Ghidra-in-Linux.jpg
 tags:
     - "ghidra"
@@ -10,6 +11,8 @@ tags:
 To start a shared project in Ghidra you'll need a Ghidra server. How do you make or start one?
 
 There's three things you need to do:
+
+<!-- more -->
 
 1. Get a copy of Ghidra.[^1]
 2. Run the server install script.

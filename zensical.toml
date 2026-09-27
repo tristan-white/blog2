@@ -44,41 +44,10 @@ Copyright &copy; 2026 Tristan White
 # can be defined using TOML syntax.
 #
 # Read more: https://zensical.org/docs/setup/navigation/
-nav = [
-    {"Home" = "index.md" },
-    { "Posts" = [
-        "posts/runna-review.md",
-        "posts/navfitx.md",
-        "posts/nmap-scripting.md",
-        "posts/fasthtml-railway.md",
-        "posts/fitreps.md",
-        "posts/raw-sockets.md",
-        "posts/aoc24.md",
-        "posts/embed-google-photos.md",
-        "posts/azores.md",
-        "posts/ghidra-headless.md",
-        # "posts/comments-have-arrived.md",
-        "posts/credit-cards.md",
-        "posts/javascript.md",
-        "posts/oscp.md",
-        "posts/windows-to-linux-file-transfer.md",
-        "posts/mermaid-on-static-sites.md",
-        "posts/svgs-in-jekyll.md",
-        "posts/hashcat.md",
-        "posts/mitmproxy.md",
-        "posts/gradio.md",
-        "posts/tar-and-nc-for-exfil.md",
-        "posts/ghidra-server.md",
-        "posts/squarespace-domains-github-pages.md",
-        "posts/plotly.md",
-        "posts/firmware-extraction.md",
-        "posts/re-dotnet.md",
-        "posts/active-open-mindedness.md",
-        "posts/windows-pcaps.md",
-        "posts/murph.md",
-        "posts/books.md",
-    ]},
-]
+# nav = [
+#     {"Home" = "index.md" },
+# 	{ "Blog" = ["blog/index.md"] },
+# ]
 
 # With the "extra_css" option you can add your own CSS styling to customize
 # your Zensical project according to your needs. You can add any number of
@@ -372,6 +341,9 @@ auto_append = ["includes/abbreviations.md"]
 [project.markdown_extensions.pymdownx.keys]
 [project.markdown_extensions.pymdownx.details]
 [project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
 
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
@@ -387,3 +359,5 @@ emoji_index = "zensical.extensions.emoji.twemoji"
 [project.markdown_extensions.pymdownx.caret]
 [project.markdown_extensions.pymdownx.mark]
 [project.markdown_extensions.pymdownx.tilde]
+
+[project.plugins.blog]

@@ -10,6 +10,8 @@ updated: 2024-12-16
 
 I've managed to stay away from javascript throughout a whole computer science degree and two years as a software engineer but every once in a while something pops up that requires it and I'll wish I was more familiar with it. So I went and learned a bit of JS today.
 
+<!-- more -->
+
 To practice, I made a calculator to (roughly) calculate the annual salary of military members after taxes.
 
 <input type="number" id="bah" placeholder="Monthly BAH"/><br>

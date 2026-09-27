@@ -9,6 +9,8 @@ tags:
 
 I wanted to make Vim my default application for opening `.txt`, `.c`, `.py`, and other files, but the it took awhile to set up Vim well on Windows. Here are the steps you should follow if you want Vim to be your default text editor for files on Windows:
 
+<!-- more -->
+
 1. Install it from [vim.org](https://www.vim.org/download.php).
 2. Make Vim the standard application for opening files with certain extensions; do this in the [Default apps](https://www.howtogeek.com/746203/how-to-set-your-default-apps-on-windows-11/) section within settings.
 3. Change backup settings. When you double-click an app with Vim set as the Default app to open it, a GUI version of Vim will pop open the file. But when you save an quit vim, there will be additionally files in the directory of the file you just edited. For example, after editing a file called `bar`, my directory looked like this:

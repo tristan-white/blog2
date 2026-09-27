@@ -8,6 +8,8 @@ date: 2022-01-22
 
 This is the document I wish I had when I started using Unix command line interfaces (CLI). There are already many beginner's guides to using a unix CLI online, but I feel most of them skip some important commands. This article assumes you already know some of the most essential commands, and how to pass arguments to commands - if not, read [this article](https://www.linuxjournal.com/content/linux-command-line-interface-introduction-guide) first. If your using a Windows machine and are new to using CLIs, note that the CLIs that come with Windows operating systems are Command Prompt and Powershell which are not Unix CLIs, but you can [install a Unix CLI on your Windows computer](https://learn.microsoft.com/en-us/windows/wsl/install) if you desire.
 
+<!-- more -->
+
 #### man
 
 Some beginner's guides don't teach this command, but I think it's most important because it shows **man**uals (ie instructions) for how to use other commands. For example, to learn how to use the command `ls` or to see what arguments you can pass to that command, enter `man ls` into your CLI. After displaying the instructions, press `q` to quit or `h` to show the help page which, among other things, will tell you how to navigate the manuals using your keyboard. Alternatively if you prefer a webpage, google "man <command>" and a link to a webpage with the command's manual will almost certainly be the first result.

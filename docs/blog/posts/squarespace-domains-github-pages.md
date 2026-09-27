@@ -10,6 +10,8 @@ updated: 2024-10-18
 
 Github Pages will host anyone's website for free, as long as it is statically generated (ie you aren't doing any fancy backend stuff like interacting with databases).
 
+<!-- more -->
+
 By default, the site will be hosted at `<github-username>.github.io`. For example, my website (the site you're on now) is hosted at [tristan-white.github.io](https://tristan-white.github.io).
 
 But if you enter that in your search bar, you'll be sent to this site and see `tristanwhite.me` in the URL bar. The reason for this is that I've set up my github pages site to use a custom domain that was registered through Squarespace. 

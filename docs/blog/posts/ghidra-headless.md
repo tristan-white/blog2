@@ -10,6 +10,8 @@ date: 2024-12-08
 
 Say you are beginning a new project to pentest an embedded device, and you're able to get a copy of firmware and get access to the filesystem on the device. At this point, there may be a number of reasons you'd want to import all the executables and libraries into a ghidra project:
 
+<!-- more -->
+
 - The device uses a lot of custom libraries. In order to resolve calls to functions from these libraries in ghidra, you'll need to import the libraries into your ghidra project, which would take very long to do manually.
 - You have a guess as to how some of the devices funtionality is implemented, but would like to avoid manually opening up every binary/library in ghidra in order to see if the file has what you're looking for (eg a bind to a certain port, calls to a particular library, etc).
 - There are files you'd like to inspect with ghidra, but you don't want to have to wait for ghidra to analyze each file when you open each for the first time.

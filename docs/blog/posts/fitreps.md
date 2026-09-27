@@ -10,6 +10,8 @@ date: 2025-01-02
 !!! info "BLUF"
     There are documents online that will tell you exactly what language and achievements should be in your FITREP. Using them will greatly simplify your process of writing FITREPs.
 
+<!-- more -->
+
 FITREPs is painful. None of us (hopefully) have experience bragging about ourselves. Then there's the uncertainty in trying to figure out how to condense a year's worth of work into a few bullet points: 
 
 *What things did I do really matter? Does anyone reading this care that I did X or Y? Did I phrase everything well?*

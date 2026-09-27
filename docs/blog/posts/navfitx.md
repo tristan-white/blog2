@@ -11,6 +11,8 @@ TLDR:
 - I was disappointed it failed, because the 1998 app is quite bad.
 - I'd been thinking about a foray into desktop app development, so I took the opportunity to build a [replacement for NAVFIT98](https://github.com/tristan-white/navfitx).
 
+<!-- more -->
+
 ## Older than Most LTJGs
 
 Why does the Navy require sailors to use an app that's older than me and written in Visual Basic to create annual performance evaluations?

@@ -5,10 +5,13 @@ image: https://lh3.googleusercontent.com/pw/AP1GczMCiRJmXjcSJuLDsbjfGXjq0uCELeFY
 tags:
     - website
 date: 2024-11-29
+draft: true
 ---
 
 
 It's easy to share google photos with others, but it's not simple to embed them in blogs or personal websites.
+
+<!-- more -->
 
 The website [labnol.org has a tool](https://www.labnol.org/embed/google/photos/) that allows you to easily embed google photos, but in my experiene it occasionally doesn't work. Additionally, sometimes you have to complete google captchas that can be pretty time consuming if you're trying to generate embed links for lots of photos.
 

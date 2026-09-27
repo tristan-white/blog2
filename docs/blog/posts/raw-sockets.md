@@ -9,6 +9,8 @@ date: 2024-12-08
 
 I began learning about raw sockets in C recently. Here's a simple raw socket proram in C with comments explaning what's going on (also on [github](https://gist.github.com/tristan-white/f0712db5aa449dd4c655c1f6163f74bd):
 
+<!-- more -->
+
 ```c
 /** This code shows how to create raw socket in C that listens for any
  * incoming packet of any protocol. Comments added anywhere someone 

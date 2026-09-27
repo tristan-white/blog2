@@ -8,7 +8,12 @@ tags:
 date: 2024-07-12
 ---
 
+Notes from my time studying for the [OSCP](https://www.offsec.com/courses/pen-200/) exam.
+
+<!-- more -->
+
 ## Intro to Web Application Attacks
+
 - After discovering a web app, use Gobuster to enumerate files/directories exposed by the app. Use the “dir” mode to do this.
 	- gobuster needs a word list to aid enumeration. You’ll want the list to include “web words” like “js”. Use `/usr/share/wordlists/dirb/[common.txt/big.txt]`
 		- Example: `gobuster dir -w /usr/share/wordlists/dirb/common.txt -u "http://xxx.xxx.xxx.xxx/"`

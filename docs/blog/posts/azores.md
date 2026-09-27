@@ -9,6 +9,8 @@ date: 2024-11-19
 
 This week I took a vacation to the Azores that was funded almost entirely by credit card points and benefits.
 
+<!-- more -->
+
 Were I not in the military, there's no way I would be able to afford these credit cards' annual fees. If you (or your spouse) are in the military, read on for info on how to take an incredibly nice vacation on a very low budget.
 
 ## Planning the Trip

@@ -37,6 +37,8 @@ graph TD
 	hard --> final
 ```
 
+<!-- more -->
+
 [Mermaid](https://mermaid.js.org/) is a neat diagramming and charting tool that lets you render markdown as a graph or chart, making it a great tool for adding graphs to static site generators such as [Jekyll](https://jekyllrb.com/) or [Hugo](https://gohugo.io/). 
 
 You can write markdown for mermaid graphs and see them rendered in real time on [mermaid.live](https://mermaid.live).

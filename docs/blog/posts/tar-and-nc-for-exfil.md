@@ -15,6 +15,8 @@ When investigating embedded systems, some factors can make this process more dif
 - the target system is not physically accessible
 - the target system has very little storage
 
+<!-- more -->
+
 I have noticed that netcat, or `nc`, is one utility that’s fairly common on embedded systems. Or at least more common than `scp`, which would be the easiest tool for remote copying directories. In the past, I’ve used `nc` for copying a single file at a time by setting up a listener on the target:
 
 `# cat file.txt | nc -lp 1234` 
