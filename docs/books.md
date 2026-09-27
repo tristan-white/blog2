@@ -6,47 +6,28 @@ image: https://images.unsplash.com/photo-1483736624420-dd3c4c0f12c4?q=80&w=1935&
 tags:
     - books
 date: 2022-01-01
+hide:
+    - toc
 ---
 
 :point_right: [Follow me on goodreads](https://www.goodreads.com/tristan_white)
+!!! quote "Dr. Suess"
+    "The more that you read, the more things you will know. The more that you learn, the more places you'll go."
 
----
+!!! quote "Oscar Wilde"
+    "It is what you read when you don't have to that determines what you will be when you can't help it."
 
-> "If you haven't read hundreds of books, you are functionally illiterate, and you will be incompetent, because your personal experiences alone aren't broad enough to sustain you."
->
->Jim Mattis, *Call Sign Chaos: Learning to Lead*
+!!! quote "Fran Lewbowitz"
+    "Think before you speak. Read before you think."
 
----
+!!! quote "John Steinbeck, from *East of Eden*"
+    "No story has power, nor will it last, unless we feel in ourselves that it is true and true of us."
 
-> "The more that you read, the more things you will know. The more that you learn, the more places you'll go."
->
-> Dr. Suess
+!!! quote "Walter Isaacson, *Ben Franklin*"
+    "Traveling was...both a source of knowledge and a pleasure. He believed that the world was a book, and those who did not travel read only one page."
 
----
-
-> "It is what you read when you don't have to that determines what you will be when you can't help it."
->
-> Oscar Wilde
-
----
-
-> "Think before you speak. Read before you think."
->
-> Fran Lewbowitz
-
----
-
-> "No story has power, nor will it last, unless we feel in ourselves that it is true and true of us."
->
-> John Steinbeck, *East of Eden*
-
----
-
-> "Traveling was for Franklin both a source of knowledge and a pleasure. He believed that the world was a book, and those who did not travel read only one page."
-
-> Walter Isaacson, *Ben Franklin*
-
----
+!!! quote "Jim Mattis, in *Call Sign Chaos: Learning to Lead*"
+    "If you haven't read hundreds of books, you are functionally illiterate, and you will be incompetent, because your personal experiences alone aren't broad enough to sustain you."
 
 ### Read ✅
 

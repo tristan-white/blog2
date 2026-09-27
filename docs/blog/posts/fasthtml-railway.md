@@ -1,6 +1,6 @@
 ---
 title: How to deploy FastHTML on Railway.com
-description: The new web dev power couple.
+description: A web dev power couple.
 image: /assets/images/fasthtml-railway/fasthtml-railway.png
 date: 2025-04-19
 ---

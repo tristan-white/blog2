@@ -6,10 +6,10 @@ date: 2026-01-16
 updated: 2026-01-18
 ---
 
-TLDR:
-- I found out a few months ago the Navy scrapped the new performance evaluation app meant to replace the current one built in 1998 due to excessive bugs and software issues.
-- I was disappointed it failed, because the 1998 app is quite bad.
-- I'd been thinking about a foray into desktop app development, so I took the opportunity to build a [replacement for NAVFIT98](https://github.com/tristan-white/navfitx).
+!!! info "TL;DR"
+    - I found out a few months ago the Navy scrapped the new performance evaluation app meant to replace the current one built in 1998 due to excessive bugs and software issues.
+    - I was disappointed it failed, because the 1998 app is quite bad.
+    - I'd been thinking about a foray into desktop app development, so I took the opportunity to build a [replacement for NAVFIT98](https://github.com/tristan-white/navfitx).
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ In 1998, this process was entirely completed on paper. NAVFIT98 made this proces
 
 Worst of all, NAVFIT98 lacked the ability to validate reports. What this means: there are specific instructions for the type and format of data that goes into each block/field in a report. If the type or format of the data in the block is incorrect, it invalidates the reports. When an invalid report is submitted to NAVPERSCOM, the command submitting the report is notified that the report must be corrected and resubmitted. **Approximately 60k reports each year are rejected.** Even worse: **20% of rejected reports are not resubmitted by the originating commands**.
 
-Here's the kicker: every sailors' report, as per the instruction in BUPERS (about 600k per year) is **physically mailed** to NAVPERSCOM, where each report is manually scanned and uploaded into a sailor's record?[^3] The Navy is the only branch that uses physical paper for preformance evaluation reports.[^4]
+Here's the kicker: every sailors' report, as per the instruction in BUPERS (about 600k per year) is **physically mailed** to NAVPERSCOM, where each report is manually scanned and uploaded into a sailor's record?[^3] The Navy is the only branch that uses physical paper for performance evaluation reports.[^4]
 
 ## So what?
 
